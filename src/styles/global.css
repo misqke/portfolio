@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container-full {
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: 1300px;
+  margin: auto;
+}

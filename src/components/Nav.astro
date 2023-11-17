@@ -1,0 +1,86 @@
+---
+
+---
+
+<script>
+  let open = false;
+const toggleBtn = document.getElementById("toggle");
+const nav = document.querySelector("nav");
+const toggle = () => {
+  open = !{open};
+  console.log("clicked");
+  nav.classList.toggle("open");
+}
+toggleBtn.addEventListener("click", toggle)
+</script>
+
+<div class="container-full">
+  <div class="container navbar">
+    <div class="nav-title">
+      <a>Mike Rust Developer</a>
+      <button id="toggle" type="button">X</button>
+    </div>
+    <nav class="nav">
+      <ul>
+        <li><a>About</a></li>
+        <li><a>Projects</a></li>
+        <li><a>Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<style>
+  .navbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: .5rem;
+    position: relative;
+  }
+  .nav-title{
+    display: flex;
+    flex: 1;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .nav-title button {
+    display: none;
+  }
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+  }
+
+  @media screen and (max-width: 600px){
+    .navbar{
+      flex-direction: column;
+    }
+    .nav-title button {
+    display: block;
+    }
+    nav {
+      width: 100%;
+    }
+    ul {
+      height: 0px;
+      overflow: hidden;
+      flex-direction: column;
+      gap: 0;
+      align-items: flex-start;
+      width :100%;
+    }
+    li {
+      padding: .5rem;
+    }
+    .open ul {
+      height: auto;
+    }
+
+  }
+</style>
