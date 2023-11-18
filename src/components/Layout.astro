@@ -17,5 +17,21 @@ import "../styles/global.css";
 		<main class="container-full">
       <slot />
     </main>
+		<script>
+			const sections = document.querySelectorAll("section");
+			const links = document.querySelectorAll(".nav a");
+			window.onscroll = (e) => {
+			const topArr = [];
+			sections.forEach(s => topArr.push(s.getBoundingClientRect().top));
+			const index = topArr.findIndex(s => s < 100 && s > 0);
+			links.forEach(l => l.classList.remove("active"));
+			if (index != -1) {
+				links[index].classList.add("active");
+			} else {
+				const newIndex = topArr.findIndex(s => s>0);
+				links[newIndex - 1].classList.add("active");
+			}
+			}
+		</script>
 	</body>
 </html>

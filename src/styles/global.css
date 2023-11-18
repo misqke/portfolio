@@ -2,6 +2,49 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  text-decoration: none;
+  /* transition: color 100ms, background-color 100ms; */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  position: relative;
+  --primary: #147;
+  --secondary: #174;
+  --background: #fff;
+  --background2: #eee;
+  --background3: #ccc;
+  --text: #121212;
+}
+
+body.dark {
+  --primary: #69c;
+  --secondary: #3c9;
+  --background: #121212;
+  --background2: #000;
+  --background3: #333;
+  --text: #eee;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: var(--background);
+  color: var(--text);
+  padding: 1rem;
+}
+
+section.container {
+  padding-top: 2.5rem;
+}
+
+section.container:first-child {
+  padding-top: 0;
 }
 
 .container-full {

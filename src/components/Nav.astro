@@ -1,36 +1,62 @@
 ---
 
 ---
-
+<!-- scripts -->
 <script>
   let open = false;
-const toggleBtn = document.getElementById("toggle");
+const toggleBtn = document.getElementById("nav-toggle");
 const nav = document.querySelector("nav");
 const toggle = () => {
   open = !{open};
-  console.log("clicked");
   nav.classList.toggle("open");
 }
-toggleBtn.addEventListener("click", toggle)
+toggleBtn.addEventListener("click", toggle);
+
+const themeToggle = document.getElementById("theme-toggle")
+themeToggle.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    document.body.classList.add("dark")
+    window.localStorage.setItem("theme", "dark");
+  }
+  else {
+    document.body.classList.remove("dark");
+    window.localStorage.setItem("theme", "light");
+  }
+})
+let theme = window.localStorage.getItem("theme");
+if (theme == "dark") {
+  themeToggle.checked = true;
+  document.body.classList.add("dark");
+
+}
 </script>
 
-<div class="container-full">
+<!-- element -->
+<div id="navbar-container" class="container-full">
   <div class="container navbar">
     <div class="nav-title">
       <a>Mike Rust Developer</a>
-      <button id="toggle" type="button">X</button>
+      <input type="checkbox" id="theme-toggle" />
+      <button id="nav-toggle" type="button">X</button>
     </div>
     <nav class="nav">
       <ul>
-        <li><a>About</a></li>
-        <li><a>Projects</a></li>
-        <li><a>Contact</a></li>
+        <li><a id="hero-link" class="active" onclick="window.scrollTo(0,0)">Home</a></li>
+        <li><a id="about-link" href="#about">About</a></li>
+        <li><a id="projects-link" href="#projects">Projects</a></li>
+        <li><a id="contact-link" href="#contact">Contact</a></li>
       </ul>
     </nav>
   </div>
 </div>
 
+<!-- styles -->
 <style>
+  #navbar-container {
+    position: sticky;
+    top: 0;
+    background-color: var(--background2);
+  }
   .navbar{
     display: flex;
     flex-direction: row;
@@ -43,6 +69,7 @@ toggleBtn.addEventListener("click", toggle)
     flex: 1;
     width: 100%;
     justify-content: space-between;
+    color: var(--text);
   }
   .nav-title button {
     display: none;
@@ -55,6 +82,22 @@ toggleBtn.addEventListener("click", toggle)
     margin: 0 !important;
     padding: 0 !important;
     position: relative;
+  }
+  li a{
+    color: var(--primary);
+    cursor: pointer;
+    transition: color 200ms;
+    padding: .125rem .25rem;
+    border-radius: .25rem;
+  }
+  li a:hover {
+    color: var(--secondary);
+  }
+  li a.active{
+    background: var(--background3);
+  }
+  #theme-toggle{
+    margin-right: 1rem;
   }
 
   @media screen and (max-width: 600px){
