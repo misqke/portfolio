@@ -1,43 +1,15 @@
 ---
-
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 <!-- scripts -->
-<script>
-  let open = false;
-const toggleBtn = document.getElementById("nav-toggle");
-const nav = document.querySelector("nav");
-const toggle = () => {
-  open = !{open};
-  nav.classList.toggle("open");
-}
-toggleBtn.addEventListener("click", toggle);
 
-const themeToggle = document.getElementById("theme-toggle")
-themeToggle.addEventListener("change", (e) => {
-  if (e.target.checked) {
-    document.body.classList.add("dark")
-    window.localStorage.setItem("theme", "dark");
-  }
-  else {
-    document.body.classList.remove("dark");
-    window.localStorage.setItem("theme", "light");
-  }
-})
-let theme = window.localStorage.getItem("theme");
-if (theme == "dark") {
-  themeToggle.checked = true;
-  document.body.classList.add("dark");
-
-}
-</script>
 
 <!-- element -->
 <div id="navbar-container" class="container-full">
   <div class="container navbar">
     <div class="nav-title">
       <a>Mike Rust Developer</a>
-      <input type="checkbox" id="theme-toggle" />
-      <button id="nav-toggle" type="button">X</button>
+      <ThemeToggle />
     </div>
     <nav class="nav">
       <ul>
@@ -55,13 +27,16 @@ if (theme == "dark") {
   #navbar-container {
     position: sticky;
     top: 0;
-    background-color: var(--background2);
+    background: var(--background2);
+    padding: .5rem;
+  }
+  nav {
+    margin-left: 2rem;
   }
   .navbar{
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: .5rem;
     position: relative;
   }
   .nav-title{
@@ -69,14 +44,14 @@ if (theme == "dark") {
     flex: 1;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
     color: var(--text);
-  }
-  .nav-title button {
-    display: none;
+    font-size: 1.5rem;
   }
   ul {
     list-style: none;
     display: flex;
+    height: 1.25rem;
     flex-direction: row;
     gap: 1rem;
     margin: 0 !important;
@@ -87,8 +62,9 @@ if (theme == "dark") {
     color: var(--primary);
     cursor: pointer;
     transition: color 200ms;
-    padding: .125rem .25rem;
+    padding: .25rem .5rem;
     border-radius: .25rem;
+    font-weight: 600;
   }
   li a:hover {
     color: var(--secondary);
@@ -96,34 +72,18 @@ if (theme == "dark") {
   li a.active{
     background: var(--background3);
   }
-  #theme-toggle{
-    margin-right: 1rem;
-  }
 
-  @media screen and (max-width: 600px){
+  @media screen and (max-width: 800px){
     .navbar{
       flex-direction: column;
-    }
-    .nav-title button {
-    display: block;
+      gap: .5rem;
     }
     nav {
       width: 100%;
+      margin-left: 0;
     }
     ul {
-      height: 0px;
-      overflow: hidden;
-      flex-direction: column;
-      gap: 0;
-      align-items: flex-start;
-      width :100%;
+      justify-content: center;
     }
-    li {
-      padding: .5rem;
-    }
-    .open ul {
-      height: auto;
-    }
-
   }
 </style>
