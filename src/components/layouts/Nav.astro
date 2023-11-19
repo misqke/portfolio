@@ -17,6 +17,7 @@ import ThemeToggle from "./ThemeToggle.astro";
         <li><a id="about-link" href="#about">About</a></li>
         <li><a id="projects-link" href="#projects">Projects</a></li>
         <li><a id="contact-link" href="#contact">Contact</a></li>
+        <li><a id="tutorials-link" href="/tutorials">Tutorials</a></li>
       </ul>
     </nav>
   </div>
@@ -72,7 +73,7 @@ import ThemeToggle from "./ThemeToggle.astro";
     border-radius: .25rem;
     font-weight: 600;
   }
-  a:hover {
+  li a:hover {
     color: var(--secondary);
   }
   li a.active{
@@ -82,7 +83,7 @@ import ThemeToggle from "./ThemeToggle.astro";
     color: var(--primary);
   }
 
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 950px){
     .navbar{
       flex-direction: column;
       gap: .5rem;

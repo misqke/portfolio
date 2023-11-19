@@ -1,0 +1,49 @@
+---
+import "../../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css";
+---
+<div id="theme-toggle-container">
+  <i id="sun-icon" class="bi bi-sun-fill"></i>
+  <label for="theme-toggle">
+    <input id="theme-toggle" hidden type="checkbox" />
+    <span id="toggle-nub"></span>
+  </label>
+  <i id="moon-icon" class="bi bi-moon"></i>
+</div>
+
+<style>
+  #theme-toggle-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem;
+  }
+  label{
+    width: 2rem;
+    height: 1rem;
+    border-radius: .5rem;
+    border: 1px solid var(--text);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  #toggle-nub{
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: var(--primary);
+    display: block;
+    transition-duration: 100ms;
+  }
+  i{
+    font-size: 1rem;
+    color: var(--primary);
+  }
+  #theme-toggle-container.dark #toggle-nub {
+    transform: translateX(100%);
+  }
+</style>
+
+
+<script src="../../js/themeToggle.js"></script>

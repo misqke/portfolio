@@ -14,12 +14,15 @@ html {
 body {
   width: 100%;
   position: relative;
+  min-height: 100vh;
   --primary: #147;
   --secondary: #174;
   --background: #fff;
   --background2: #ccc;
   --background3: #eee;
   --text: #121212;
+  --neutral: #777;
+  background: linear-gradient(var(--background2) 3rem, var(--background) 75vh);
 }
 
 body.dark {
@@ -35,7 +38,7 @@ main {
   display: flex;
   flex-direction: column;
   flex: 1;
-  background: linear-gradient(var(--background2) 3rem, var(--background) 75vh);
+
   color: var(--text);
 }
 
@@ -62,7 +65,7 @@ canvas {
   height: 100vh;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 950px) {
   section.container {
     padding: 5.25rem 1rem 1rem;
     min-height: calc(100vh - 5rem);

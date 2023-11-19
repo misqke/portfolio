@@ -3,17 +3,20 @@ class Bubble {
     this.x = x;
     this.y = y;
     this.size = 2;
+    this.alpha = 1;
   }
   draw(ctx) {
+    ctx.globalAlpha = this.alpha;
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.stroke();
   }
   update(bubbles) {
-    if (this.size > 20) {
+    if (this.alpha < 0) {
       bubbles.shift();
     } else {
       this.size += 0.5;
+      this.alpha -= 0.005;
     }
   }
 }
@@ -29,7 +32,7 @@ window.onload = () => {
   let x = 0;
   let y = 0;
 
-  ctx.strokeStyle = "#777";
+  ctx.strokeStyle = "#47a";
 
   window.addEventListener("resize", (e) => {
     canvas.width = e.target.innerWidth;
@@ -41,7 +44,7 @@ window.onload = () => {
     const b = Math.abs(y - e.clientY);
     const distance = Math.sqrt(a * a + b * b);
 
-    if (distance > 10) {
+    if (distance > 20) {
       x = e.clientX;
       y = e.clientY;
       const bubble = new Bubble(e.clientX, e.clientY);

@@ -1,0 +1,19 @@
+---
+import TutorialLayout from "../../components/layouts/TutorialLayout.astro";
+const allTutorials = await Astro.glob("./*.mdx");
+---
+<TutorialLayout>
+  <div class="section">
+    
+  </div>
+  <div class="section">
+    {allTutorials.map(t => (
+      <div>
+        <h3>{t.frontmatter.title}</h3>
+        <p>{t.frontmatter.description}</p>
+        <a href={t.url}>Read more...</a>
+      </div>
+    ))}
+  </div>
+
+</TutorialLayout>

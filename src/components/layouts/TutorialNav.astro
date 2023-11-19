@@ -1,0 +1,96 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+---
+<!-- scripts -->
+
+
+<!-- element -->
+<div id="navbar-container" class="container-full">
+  <div class="container navbar">
+    <div class="nav-title">
+      <a href="/">Mike Rust Developer</a>
+      <ThemeToggle />
+    </div>
+    <nav class="nav">
+      <ul>
+        <li><a id="home-link" href="/">Home</a></li>
+        <li><a id="tutorials-link" class="active" href="/tutorials">Tutorials</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- styles -->
+<style>
+  #navbar-container {
+    position: sticky;
+    top: 0;
+    background: var(--background2);
+    padding: .5rem 1rem;
+    z-index: 100;
+  }
+  nav {
+    margin-left: 2rem;
+  }
+  .navbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+  }
+  .nav-title{
+    display: flex;
+    flex: 1;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  ul {
+    list-style: none;
+    display: flex;
+    height: 1.25rem;
+    flex-direction: row;
+    gap: 1rem;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+  }
+  a{
+    color: var(--primary);
+    cursor: pointer;
+  }
+  li a{
+    color: var(--primary);
+    cursor: pointer;
+    transition: color 200ms;
+    padding: .25rem .5rem;
+    border-radius: .25rem;
+    font-weight: 600;
+  }
+  li a:hover {
+    color: var(--secondary);
+  }
+  li a.active{
+    background: var(--background3);
+  }
+  li a.active:hover {
+    color: var(--primary);
+  }
+
+  @media screen and (max-width: 700px){
+    .navbar{
+      flex-direction: column;
+      gap: .5rem;
+    }
+    nav {
+      width: 100%;
+      margin-left: 0;
+    }
+    ul {
+      justify-content: center;
+    }
+  }
+</style>
