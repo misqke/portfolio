@@ -5,7 +5,19 @@ description: "In this tutorial we will cover making a flip box element with html
 ---
 
 import FlipBox from "../../components/tutorials/FlipBox.astro";
+import Row from "../../components/shared/Row.astro";
 
-# FlipBox
-
-<FlipBox />
+<Row justify="space-between" gap="2rem">
+  <FlipBox height="200px" width="50%">
+    <p>Back of card</p>
+  </FlipBox>
+  <FlipBox height="200px" width="50%">
+    <p>Back of card</p>
+  </FlipBox>
+  <FlipBox height="200px" width="50%">
+    <p>Back of card</p>
+  </FlipBox>
+  <FlipBox height="200px" width="50%">
+    <p>Back of card</p>
+  </FlipBox>
+</Row>

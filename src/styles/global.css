@@ -16,7 +16,7 @@ body {
   position: relative;
   min-height: 100vh;
   --primary: #147;
-  --secondary: #174;
+  --secondary: #47a;
   --background: #fff;
   --background2: #ccc;
   --background3: #eee;
@@ -27,7 +27,7 @@ body {
 
 body.dark {
   --primary: #69c;
-  --secondary: #3c9;
+  --secondary: #147;
   --background: #121212;
   --background2: #000;
   --background3: #333;

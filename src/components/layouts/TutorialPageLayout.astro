@@ -1,6 +1,6 @@
 ---
 import TutorialNav from "./TutorialNav.astro";
-const {frontmatter} = Astro.props;
+const {title} = Astro.props;
 import "../../styles/global.css";
 ---
 
@@ -10,29 +10,13 @@ import "../../styles/global.css";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{frontmatter.title}</title>
+		<title>{title}</title>
 	</head>
 	<body>
     <TutorialNav />
 		<main class="container">
-			<h1>{frontmatter.title}</h1>
-			<i>{frontmatter.description}</i>
-			<hr />
       <slot />
     </main>
 		<script src="../../js/navScroll.js"></script>
 	</body>
 </html>
-
-<style>
-	main{
-		padding: 1rem;
-		max-width: 1000px;
-	}
-	h1{
-		margin-bottom: .5rem;
-	}
-	hr {
-		margin: 1rem 0;
-	}
-</style>

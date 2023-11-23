@@ -1,22 +1,24 @@
 ---
+const {width = "100%", height = "100%", bgFront = "#444", bgBack = "#444", textFront = "#ddd", textBack = "#ddd", title = "Hello World"} = Astro.props;
 ---
 
 <div class="flip-box">
   <div class="card-container">
-    <div class="card-face back">
-      This is the back
-    </div>
     <div class="card-face front">
-      This is the front
+      <p class="card-title">{title}</p>
     </div>
+    <div class="card-face back">
+      <slot />
+    </div>
+    
   </div>
 </div>
 
-<style>
+<style define:vars={{width, height, bgFront, bgBack, textFront, textBack}}>
   .flip-box {
     perspective: 450px;
-    width: 200px;
-    height: 200px; 
+    width: var(--width);
+    height: var(--height); 
   }
   .card-container{
     width: 100%;
@@ -24,6 +26,12 @@
     position: relative;
     transition-duration: 500ms;
     backface-visibility: hidden;
+    text-align: center;
+  }
+  .card-title{
+    font-size: 1.5rem;
+    font-weight: 600px;
+    color: var(--textFront);
   }
   .card-face::before{
     content: "";
@@ -44,10 +52,12 @@
     justify-content: center;
   }
   .card-face.front {
-    background: red;
+    background: var(--bgFront);
+    z-index:2;
   }
   .card-face.back {
-    background: blue;
+    background: var(--bgBack);
     transform: rotateY(180deg);
+    color: var(--textBack);
   }
 </style>

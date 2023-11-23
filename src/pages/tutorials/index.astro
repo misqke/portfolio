@@ -1,8 +1,8 @@
 ---
-import TutorialLayout from "../../components/layouts/TutorialLayout.astro";
+import TutorialPageLayout from "../../components/layouts/TutorialPageLayout.astro";
 const allTutorials = await Astro.glob("./*.mdx");
 ---
-<TutorialLayout>
+<TutorialPageLayout>
   <div class="section">
     
   </div>
@@ -16,4 +16,4 @@ const allTutorials = await Astro.glob("./*.mdx");
     ))}
   </div>
 
-</TutorialLayout>
+</TutorialPageLayout>
