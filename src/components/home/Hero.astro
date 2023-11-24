@@ -1,0 +1,60 @@
+---
+import FlipBox from "../tutorials/FlipBox.astro";
+
+---
+
+<script src="../../js/heroFlipbox.js">
+
+  
+</script>
+
+<section id="hero" class="container">
+  <div class="content-container">
+    <div>
+      <p class="title">Mike Rust</p>
+    <h1>Developer</h1>
+    <p class="text">I make stuff for the web!</p>
+    </div>
+    <div>
+      <FlipBox width="200px" height="200px" textFront="#fff" textBack="#fff">
+        <p slot="front" id="front">HTML</p>
+        <p slot="back" id="back">CSS</p>
+      </FlipBox>
+    </div>
+  </div>
+</section>
+
+
+<!-- style -->
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 3rem;
+  }
+  .content-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 65%;
+  }
+  .title {
+    font-size: 3rem;
+  }
+  h1 {
+    font-size: 3.5rem;
+    color: var(--primary);
+  }
+  .title,h1 {
+    font-weight: 700;
+  }
+  .text {
+    font-size: 1.5rem;
+  }
+  @media screen {
+    
+  }
+</styl>

@@ -1,14 +1,14 @@
 ---
-const {width = "100%", height = "100%", bgFront = "#444", bgBack = "#444", textFront = "#ddd", textBack = "#ddd", title = "Hello World"} = Astro.props;
+const {width = "100%", height = "100%", bgFront = "#444", bgBack = "#444", textFront = "#fff", textBack = "#fff"} = Astro.props;
 ---
 
 <div class="flip-box">
   <div class="card-container">
     <div class="card-face front">
-      <p class="card-title">{title}</p>
+      <slot name="front" />
     </div>
     <div class="card-face back">
-      <slot />
+      <slot name="back" />
     </div>
     
   </div>
@@ -27,11 +27,6 @@ const {width = "100%", height = "100%", bgFront = "#444", bgBack = "#444", textF
     transition-duration: 500ms;
     backface-visibility: hidden;
     text-align: center;
-  }
-  .card-title{
-    font-size: 1.5rem;
-    font-weight: 600px;
-    color: var(--textFront);
   }
   .card-face::before{
     content: "";
@@ -54,6 +49,7 @@ const {width = "100%", height = "100%", bgFront = "#444", bgBack = "#444", textF
   .card-face.front {
     background: var(--bgFront);
     z-index:2;
+    color: var(--textFront);
   }
   .card-face.back {
     background: var(--bgBack);
