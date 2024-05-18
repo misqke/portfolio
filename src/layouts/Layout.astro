@@ -1,0 +1,39 @@
+---
+interface Props {
+	title: string;
+}
+
+import Header from "../components/Header.astro";
+import Styles from "../Styles.astro";
+import Scripts from "../Scripts.astro";
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<Styles></Styles>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<slot />
+		</main>
+		<Scripts></Scripts>
+	</body>
+</html>
+<style>
+	
+	main {
+		height: 100%;
+		min-height: 100dvh;
+	}
+	
+</style>

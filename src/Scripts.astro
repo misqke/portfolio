@@ -1,0 +1,22 @@
+<script>
+
+    const sections = document.querySelectorAll("section");
+    const links = document.querySelectorAll("[data-link]");
+    console.log(sections);
+    console.log(links);
+
+    const half = window.innerHeight / 2;
+
+    window.addEventListener("scroll", (e) => {
+        for (let i = 1; i < sections.length; i++) {
+            const rect = sections[i].getBoundingClientRect();
+            if (rect.top >= (-1 * half) && rect.top < half) {
+                links[i-1].classList.add("active");
+            } else {
+                links[i-1].classList.remove("active");
+            }
+        }
+    })
+
+
+</script>
