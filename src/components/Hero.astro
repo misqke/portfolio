@@ -1,49 +1,65 @@
 ---
 import Section from "../components/Section.astro";
+import CanvasBg from "./CanvasBg.astro";
 ---
 
 <Section id="hero" class="hero" fullHeight="true">
-  <div id="hero-row">
-    <div id="hero-content">
-      <h1 id="hero-text">
-        Mike Rust<br />Web Developer
-      </h1>
-    </div>
+  <div class="centered" id="hero-content">
+    <p>
+      Mike Rust<br />Web Developer
+    </p>
   </div>
+  <div class="centered" id="hero-content-shadow">
+    <p>
+      Web Developer<br />Mike Rust
+    </p>
+  </div>
+  <CanvasBg />
 </Section>
 
 <style>
-  #hero-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  .centered {
     text-align: center;
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    translate: -50% -50%;
     width: 100%;
-    max-width: 1000px;
-    div {
-      flex-grow: 1;
-    }
+    height: 100%;
+    display: grid;
+    place-content: center;
+    font-size: 6vw;
+    font-weight: 800;
   }
   #hero-content {
-    font-size: 4rem;
-    h1 {
+    z-index: 3;
+    /* backdrop-filter: blur(6px); */
+    p {
       background: radial-gradient(var(--text-dark), var(--primary));
       background-size: 200% auto;
       background-position: 0%;
-      backdrop-filter: blur(3px);
       color: transparent;
       background-clip: text;
       -webkit-text-fill-color: transparent;
       -webkit-background-clip: text;
-      animation: cycle 6s linear infinite;
+      animation: cycle 4s linear infinite;
+      cursor: default;
     }
-    span {
-      color: var(--primary);
+  }
+  #hero-content-shadow {
+    z-index: 2;
+    p {
+      rotate: 1 0 0 180deg;
+      translate: 0 6vw;
+      color: var(--text-shadow);
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .centered {
+      font-size: 8vw;
+    }
+    #hero-content-shadow p {
+      translate: 0 8vw;
     }
   }
   @keyframes cycle {

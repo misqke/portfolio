@@ -6,7 +6,6 @@ interface Props {
 import Header from "../components/Header.astro";
 import Styles from "../Styles.astro";
 import Scripts from "../Scripts.astro";
-import ScrollTracker from "../components/ScrollTracker.astro";
 
 const { title } = Astro.props;
 ---
@@ -24,7 +23,6 @@ const { title } = Astro.props;
   </head>
   <body>
     <Header />
-    <!-- <ScrollTracker /> -->
     <main>
       <slot />
     </main>

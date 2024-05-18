@@ -14,13 +14,4 @@
       }
     }
   });
-
-  const title = document.getElementById("hero-text");
-  let perc = 0;
-  const cycle = () => {
-    perc++;
-    title.style.background = `linear-gradient(90deg, var(--primary), var(--text-dark) ${perc}%);`;
-    requestAnimationFrame(cycle);
-  };
-  cycle();
 </script>

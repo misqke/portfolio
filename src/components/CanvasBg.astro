@@ -1,0 +1,85 @@
+---
+
+---
+
+<canvas id="canvas-bg"></canvas>
+
+<style>
+  #canvas-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+  }
+</style>
+
+<script is:inline>
+  // @ts-ignore
+  const canvas = document.getElementById("canvas-bg");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#20a6dc";
+  ctx.strokeStyle = "#20a6dc";
+
+  window.addEventListener("resize", (e) => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  const sparks = [];
+  class Spark {
+    constructor(posX, posY, speedX, speedY) {
+      this.posX = posX;
+      this.posY = posY;
+      this.speedX = speedX;
+      this.speedY = speedY;
+      this.radius = 2;
+      this.opacity = 1;
+    }
+    draw(ctx) {
+      ctx.globalAlpha = this.opacity;
+      ctx.beginPath();
+      ctx.arc(this.posX, this.posY, this.radius, 0, 2 * Math.PI);
+      ctx.closePath();
+      ctx.stroke();
+      this.update();
+    }
+    update() {
+      if (this.opacity > 0) {
+        // this.posX += this.speedX;
+        // this.posY += this.speedY;
+        this.opacity -= 0.1;
+        this.radius += 1;
+      } else {
+        sparks.shift();
+      }
+    }
+  }
+
+  const hero = document.getElementById("hero-content");
+  hero.addEventListener("mousemove", (e) => {
+    const spark = new Spark(e.x, e.y, -1 * e.movementX, -1 * e.movementY);
+    sparks.push(spark);
+  });
+
+  let start;
+
+  const run = (timestamp) => {
+    if (start == undefined) {
+      start = timestamp;
+    }
+    const change = timestamp - start;
+
+    if (change > 60) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      sparks.forEach((s) => {
+        s.draw(ctx);
+      });
+      start = timestamp;
+    }
+    requestAnimationFrame(run);
+  };
+
+  requestAnimationFrame(run);
+</script>
