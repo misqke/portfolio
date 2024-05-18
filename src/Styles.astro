@@ -1,60 +1,67 @@
 <style is:global>
+  @font-face {
+    font-family: "Kalam";
+    src: url("/fonts/Kalam/Kalam-Light.ttf") format("TrueType");
+    font-weight: 300;
+    font-style: light;
+  }
+  @font-face {
+    font-family: "Kalam";
+    src: url("/fonts/Kalam/Kalam-Regular.ttf") format("TrueType");
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Kalam";
+    src: url("/fonts/Kalam/Kalam-Bold.ttf") format("TrueType");
+    font-weight: 700;
+    font-style: bold;
+  }
 
-@font-face {
-  font-family: 'Kalam';
-  src: url('/fonts/Kalam/Kalam-Light.ttf') format('TrueType');
-  font-weight: 300;
-  font-style: light;
-}
-@font-face {
-  font-family: 'Kalam';
-  src: url('/fonts/Kalam/Kalam-Regular.ttf') format('TrueType');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Kalam';
-  src: url('/fonts/Kalam/Kalam-Bold.ttf') format('TrueType');
-  font-weight: 700;
-  font-style: bold;
-}
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+  }
+  html {
+    font-size: 16px;
+    --primary-dark: #073457;
+    --primary: #20a6dc;
+    --text-dark: #565656;
+    --text-light: #efefef;
+    --bg: #fff;
+    --bg-dark: #121212;
+    --white: #fff;
+    --black: #111;
+    --content-max: 1400px;
+    background: var(--bg);
+    font-family: "Kalam", sans-serif;
+    color: var(--text-dark);
+    scroll-behavior: smooth;
+  }
+  html.dark {
+    --text-dark: #fff;
+    --text-light: #232323;
+    --bg-dark: #fff;
+    --bg: #121212;
+  }
 
-* {
-		box-sizing: border-box;
-		padding: 0;
-		margin: 0;
-		text-decoration: none;
-	}
-	html {
-		font-size: 16px;
-		--primary-dark: #073457;
-		--primary: #20a6dc;
-		--text-dark: #565656;
-		--text-light: #efefef;
-		--bg: #fff;
-		--bg-dark: #121212;
-		--white: #fff;
-		--black: #111;
-		--content-max: 1500px;
-		background: var(--bg);
-		font-family: 'Kalam', sans-serif;
-		color: var(--text-dark);
-		scroll-behavior: smooth;
-	}
-	html.dark {
-		--text-dark: #fff;
-		--text-light: #232323;
-		--bg-dark: #fff;
-		--bg: #121212;
-	}
-	:root {
-		
-	}
-	@media screen and (max-width: 700px) {
+  .hero {
+    padding-top: 0 !important;
+    position: relative;
+  }
+  .container {
+    width: 100%;
+    max-width: var(--content-max);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+  }
+
+  @media screen and (max-width: 700px) {
     html {
       font-size: 14px;
     }
   }
-
-
 </style>

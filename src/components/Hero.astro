@@ -1,0 +1,54 @@
+---
+import Section from "../components/Section.astro";
+---
+
+<Section id="hero" class="hero" fullHeight="true">
+  <div id="hero-row">
+    <div id="hero-content">
+      <h1 id="hero-text">
+        Mike Rust<br />Web Developer
+      </h1>
+    </div>
+  </div>
+</Section>
+
+<style>
+  #hero-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 1000px;
+    div {
+      flex-grow: 1;
+    }
+  }
+  #hero-content {
+    font-size: 4rem;
+    h1 {
+      background: radial-gradient(var(--text-dark), var(--primary));
+      background-size: 200% auto;
+      background-position: 0%;
+      backdrop-filter: blur(3px);
+      color: transparent;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      animation: cycle 6s linear infinite;
+    }
+    span {
+      color: var(--primary);
+    }
+  }
+  @keyframes cycle {
+    to {
+      background-position: 200%;
+    }
+  }
+</style>

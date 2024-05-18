@@ -1,22 +1,26 @@
 <script>
+  const sections = document.querySelectorAll("section");
+  const links = document.querySelectorAll("[data-link]");
 
-    const sections = document.querySelectorAll("section");
-    const links = document.querySelectorAll("[data-link]");
-    console.log(sections);
-    console.log(links);
+  const half = window.innerHeight / 2;
 
-    const half = window.innerHeight / 2;
+  window.addEventListener("scroll", (e) => {
+    for (let i = 1; i < sections.length; i++) {
+      const rect = sections[i].getBoundingClientRect();
+      if (rect.top >= -1 * half && rect.top < half) {
+        links[i - 1].classList.add("active");
+      } else {
+        links[i - 1].classList.remove("active");
+      }
+    }
+  });
 
-    window.addEventListener("scroll", (e) => {
-        for (let i = 1; i < sections.length; i++) {
-            const rect = sections[i].getBoundingClientRect();
-            if (rect.top >= (-1 * half) && rect.top < half) {
-                links[i-1].classList.add("active");
-            } else {
-                links[i-1].classList.remove("active");
-            }
-        }
-    })
-
-
+  const title = document.getElementById("hero-text");
+  let perc = 0;
+  const cycle = () => {
+    perc++;
+    title.style.background = `linear-gradient(90deg, var(--primary), var(--text-dark) ${perc}%);`;
+    requestAnimationFrame(cycle);
+  };
+  cycle();
 </script>

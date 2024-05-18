@@ -1,32 +1,14 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Section from '../components/Section.astro';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Projects from "../components/Projects.astro";
+import About from "../components/About.astro";
+import Contact from "../components/Contact.astro";
 ---
 
-
 <Layout title="Home">
-  <Section id="hero" class="hero" fullHeight="true" innerClass="content">
-    <h1>hello</h1>
-  </Section>
-  <Section id="projects" fullHeight="true">
-    <h2>Projects</h2>
-  </Section>
-  <Section id="about" fullHeight="true">
-    <h2>About</h2>
-  </Section>
-  <Section id="contact" fullHeight="true">
-    <h2>Contact</h2>
-  </Section>
+  <Hero />
+  <Projects />
+  <About />
+  <Contact />
 </Layout>
-
-
-<style is:global>
-  .hero {
-    display: grid;
-    place-content: center;
-  }
-  .content {
-
-  }
-</style>
-

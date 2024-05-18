@@ -1,0 +1,53 @@
+---
+
+---
+
+<canvas id="scroll-track"></canvas>
+
+<script>
+  // @ts-nocheck
+  const track = document.getElementById("scroll-track");
+
+  /** positioning */
+  const setTrackPosition = () => {
+    const width = window.innerWidth;
+    if (width <= 1400) {
+      track.style.left = "10px";
+    } else {
+      const contentStart = (width - 1400) / 2;
+      if (contentStart < 50) track.style.left = `${contentStart / 2}px`;
+      else track.style.left = `${contentStart - 25}px`;
+    }
+  };
+  setTrackPosition();
+  window.addEventListener("resize", setTrackPosition);
+
+  /** canvas */
+  const ctx = track.getContext("2d");
+  ctx.fillStyle = "#fff";
+  class ScrollKnob {
+    constructor() {
+      this.posY = 50;
+      this.posX = 5;
+      this.radius = 5;
+    }
+    draw(ctx) {
+      ctx.beginPath();
+      ctx.arc(this.posX, this.posY, this.radius, 0, 2 * Math.PI);
+      ctx.fill();
+    }
+  }
+
+  const knob = new ScrollKnob();
+  knob.draw(ctx);
+</script>
+
+<style>
+  #scroll-track {
+    position: fixed;
+    top: 5rem;
+    height: calc(100dvh - 5rem);
+    width: 10px;
+    border: 1px solid var(--primary);
+  }
+</style>
