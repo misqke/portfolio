@@ -67,3 +67,24 @@
     }
   }
 </style>
+
+<style is:global>
+  .fade-in {
+    opacity: 0;
+    transition: opacity 1000ms;
+  }
+  .fade-in.visible {
+    opacity: 1;
+  }
+  .slide-in-left {
+    translate: -10rem;
+    opacity: 0;
+    transition:
+      translate 750ms,
+      opacity 3s;
+  }
+  .slide-in-left.visible {
+    translate: 0;
+    opacity: 1;
+  }
+</style>

@@ -1,6 +1,5 @@
 ---
 import Section from "../components/Section.astro";
-import CanvasBg from "./CanvasBg.astro";
 ---
 
 <Section id="hero" class="hero" fullHeight="true">
@@ -14,7 +13,6 @@ import CanvasBg from "./CanvasBg.astro";
       Web Developer<br />Mike Rust
     </p>
   </div>
-  <CanvasBg />
 </Section>
 
 <style>
@@ -33,7 +31,7 @@ import CanvasBg from "./CanvasBg.astro";
   }
   #hero-content {
     z-index: 3;
-    /* backdrop-filter: blur(6px); */
+    backdrop-filter: blur(6px);
     p {
       background: radial-gradient(var(--text-dark), var(--primary));
       background-size: 200% auto;
@@ -52,8 +50,18 @@ import CanvasBg from "./CanvasBg.astro";
       rotate: 1 0 0 180deg;
       translate: 0 6vw;
       color: var(--text-shadow);
+      background: radial-gradient(var(--text-dark), var(--primary));
+      background-size: 200% auto;
+      background-position: 0%;
+      color: transparent;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      animation: cycle 4s linear infinite reverse;
+      opacity: 0.3;
     }
   }
+
   @media screen and (max-width: 700px) {
     .centered {
       font-size: 8vw;

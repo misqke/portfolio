@@ -15,3 +15,25 @@
     }
   });
 </script>
+
+<script>
+  const topPadding = document
+    .getElementById("header-inner")
+    .getBoundingClientRect().bottom;
+  console.log(topPadding);
+  let options = {
+    root: null,
+    rootMargin: `-${topPadding}px 0px 0px 0px`,
+    threshold: 0.1,
+  };
+
+  const obs = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add("visible");
+      else entry.target.classList.remove("visible");
+    });
+  }, options);
+
+  const animEls = document.querySelectorAll("[scroll-anim]");
+  animEls.forEach((el) => obs.observe(el));
+</script>
