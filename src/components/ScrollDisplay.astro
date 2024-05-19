@@ -1,0 +1,89 @@
+---
+const { items } = Astro.props;
+const half = Math.floor(items.length / 2);
+---
+
+<div class="scroll-display">
+  <div class="scroll-display-track">
+    {
+      items.map((item, index) => {
+        return (
+          <span class={index == half ? "scroll-item active" : "scroll-item"}>
+            <img src="lake.jpg" />
+            <h3>{item.title}</h3>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit
+              a culpa facere eum! Autem quae atque obcaecati maxime iusto non.
+            </p>
+          </span>
+        );
+      })
+    }
+  </div>
+  <div></div>
+</div>
+
+<script>
+  const scrollItems = document.querySelectorAll(".scroll-item");
+  let isAnimating = false;
+  scrollItems.forEach((item, index) => {
+    item.addEventListener("mouseover", () => {
+      scrollItems.forEach((innerItem) => innerItem.classList.remove("active"));
+      scrollItems[index].classList.add("active");
+    });
+  });
+</script>
+
+<style>
+  .scroll-display {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+  .scroll-display-track {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .scroll-item {
+    display: inline;
+    border: 0.5rem solid var(--bg);
+    width: 4rem;
+    overflow: hidden;
+    position: relative;
+    transition: width 500ms;
+    object-fit: cover;
+  }
+  .scroll-item img {
+    object-fit: cover;
+    width: calc(70vw - 1rem);
+    aspect-ratio: 16 / 9;
+    display: inline;
+  }
+  .scroll-item p {
+    opacity: 0;
+    width: 0;
+    transition:
+      width 500ms,
+      opacity 500ms 250ms;
+    text-wrap: nowrap;
+  }
+  .scroll-item.active p {
+    opacity: 1;
+    width: calc(70vw - 1rem);
+  }
+  .scroll-item h3 {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    color: #fff;
+    text-wrap: nowrap;
+  }
+  .scroll-item.active {
+    width: 70vw;
+  }
+</style>

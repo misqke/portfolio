@@ -1,9 +1,28 @@
 ---
 import Section from "../components/Section.astro";
+import ScrollDisplay from "./ScrollDisplay.astro";
+const projects = [
+  {
+    title: "project 1",
+  },
+  {
+    title: "project 2",
+  },
+  {
+    title: "project 3",
+  },
+  {
+    title: "project 4",
+  },
+  {
+    title: "project 5",
+  },
+];
 ---
 
 <Section id="projects" fullHeight="true">
   <div class="container">
     <h2>Projects</h2>
+    <ScrollDisplay items={projects} />
   </div>
 </Section>
