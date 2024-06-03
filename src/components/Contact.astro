@@ -5,55 +5,103 @@ import Section from "../components/Section.astro";
 <Section id="contact" fullHeight="true">
   <div class="container">
     <h2>Contact</h2>
-    <div id="contact-body">
-      <div id="form-container">
-        <form>
-          <div class="form-control">
-            <label for="name-input">Name</label>
-            <input type="text" id="name-input" name="name-input" />
-          </div>
-          <div class="form-control">
-            <label for="email-input">Email</label>
-            <input type="text" id="email-input" name="email-input" />
-          </div>
-          <div class="form-control">
-            <label for="message-input">Message</label>
-            <textarea id="message-input" name="message-input"></textarea>
-          </div>
-          <div>
-            <button id="contact-submit-button" type="submit">Submit</button>
-          </div>
-        </form>
+    <form>
+      <div class="form-control">
+        <label for="name-input">Name</label>
+        <input
+          type="text"
+          id="name-input"
+          name="name-input"
+          minlength="4"
+          required
+          placeholder="John Doe"
+          data-field
+        />
       </div>
-    </div>
+      <div class="form-control">
+        <label for="email-input">Email</label>
+        <input
+          type="email"
+          id="email-input"
+          name="email-input"
+          required
+          placeholder="mrustdev@gmail.com"
+          data-field
+        />
+      </div>
+      <div class="form-control">
+        <label for="message-input">Message</label>
+        <textarea
+          id="message-input"
+          name="message-input"
+          rows="8"
+          minlength="15"
+          required
+          data-field
+          placeholder="Your message here..."></textarea>
+      </div>
+      <div>
+        <button
+          disabled="true"
+          class="btn"
+          id="contact-submit-button"
+          type="submit">Submit</button
+        >
+      </div>
+    </form>
   </div>
 </Section>
 
+<script>
+  // @ts-nocheck
+  const fields = document.querySelectorAll("[data-field]");
+  const submit = document.getElementById("contact-submit-button");
+  fields.forEach((f) => {
+    f.addEventListener("input", (e) => {
+      let valid = true;
+      fields.forEach((fi) => {
+        if (fi.value.length == 0 || !fi.checkValidity()) valid = false;
+      });
+      submit.disabled = !valid;
+    });
+  });
+</script>
+
 <style>
-  #contact-body {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-  }
-  #form-container {
-    width: 100%;
-    max-width: 600px;
-  }
   .form-control {
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
     input,
+    input:placeholder-shown,
+    textarea:placeholder-shown,
     textarea {
       background-color: var(--bg);
-      color: var(--text);
+      color: var(--text-dark);
       font-size: 1rem;
       padding: 0.5rem;
+      border: 1px solid var(--text-dark);
+    }
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    input:valid,
+    textarea:valid {
+      box-shadow: 0px 0px 5px 4px var(--primary);
+      border-color: var(--primary);
     }
   }
   form {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 600px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 </style>

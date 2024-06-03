@@ -26,7 +26,7 @@
   }
   html {
     font-size: 16px;
-    --primary-dark: #073457;
+    --primary-dark: #075477;
     --primary: #20a6dc;
     --text-dark: #434343;
     --text-light: #efefef;
@@ -36,12 +36,15 @@
     --black: #111;
     --content-max: 1400px;
     --text-shadow: #43434355;
+
     background: var(--bg);
     font-family: "Kalam", sans-serif;
     color: var(--text-dark);
     scroll-behavior: smooth;
   }
   html.dark {
+    --primary-dark: #075477;
+    --primary: #40c6fc;
     --text-dark: #fff;
     --text-light: #232323;
     --bg-dark: #fff;
@@ -86,5 +89,20 @@
   .slide-in-left.visible {
     translate: 0;
     opacity: 1;
+  }
+  .btn {
+    background: var(--primary);
+    border: none;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    color: #fff;
+    cursor: pointer;
+    transition: background 250ms;
+  }
+  .btn:hover {
+    background: var(--primary-dark);
+  }
+  .btn:disabled {
+    background: #333;
   }
 </style>
