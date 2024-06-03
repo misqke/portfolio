@@ -11,10 +11,7 @@ const half = Math.floor(items.length / 2);
           <span class={index == half ? "scroll-item active" : "scroll-item"}>
             <img src="lake.jpg" />
             <h3>{item.title}</h3>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit
-              a culpa facere eum! Autem quae atque obcaecati maxime iusto non.
-            </p>
+            <p>{item.description}</p>
           </span>
         );
       })
