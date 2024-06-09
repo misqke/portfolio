@@ -28,10 +28,9 @@
     font-size: 16px;
     --primary-dark: #075477;
     --primary: #20a6dc;
-    --text-dark: #434343;
-    --text-light: #efefef;
-    --bg: #fff;
-    --bg-dark: #121212;
+    --text: #fff;
+    --bg: #000;
+    --bg-dark: #000;
     --white: #fff;
     --black: #111;
     --content-max: 1400px;
@@ -39,17 +38,8 @@
 
     background: var(--bg);
     font-family: "Kalam", sans-serif;
-    color: var(--text-dark);
+    color: var(--text);
     scroll-behavior: smooth;
-  }
-  html.dark {
-    --primary-dark: #075477;
-    --primary: #40c6fc;
-    --text-dark: #fff;
-    --text-light: #232323;
-    --bg-dark: #fff;
-    --bg: #121212;
-    -text-shadow: #ffffff55;
   }
 
   .hero {
@@ -104,5 +94,6 @@
   }
   .btn:disabled {
     background: #333;
+    cursor: default;
   }
 </style>

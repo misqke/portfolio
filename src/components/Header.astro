@@ -1,5 +1,5 @@
 ---
-import ThemeToggle from "./ThemeToggle.astro";
+
 ---
 
 <header id="header">
@@ -10,7 +10,6 @@ import ThemeToggle from "./ThemeToggle.astro";
           <p class="title">Mike<span>Rust</span></p>
         </div>
       </a>
-      <ThemeToggle />
     </div>
     <nav>
       <ul>
@@ -39,8 +38,12 @@ import ThemeToggle from "./ThemeToggle.astro";
 
 <script is:inline>
   const scrollInner = document.getElementById("scroll-tracker-inner");
+  const header = document.getElementById("header");
   window.addEventListener("scroll", (e) => {
     scrollInner.style.width = `${(window.scrollY / (document.body.offsetHeight - window.innerHeight)) * 100}%`;
+    if (window.scrollY > 600) header.style.background = "#0009";
+    else if (window.screenY > 300) header.style.background = "#0005";
+    else header.style.background = "#0000";
   });
 </script>
 
@@ -50,8 +53,9 @@ import ThemeToggle from "./ThemeToggle.astro";
     position: fixed;
     top: 0;
     border-bottom: 1px solid var(--primary);
-    background: var(--bg);
+    background: #0000;
     z-index: 100;
+    transition: background 250ms;
   }
   #header-inner {
     display: flex;
@@ -69,7 +73,7 @@ import ThemeToggle from "./ThemeToggle.astro";
   .title {
     font-size: 2rem;
     font-weight: 700;
-    color: var(--text-dark);
+    color: var(--text);
     span {
       color: var(--primary);
     }
@@ -91,7 +95,7 @@ import ThemeToggle from "./ThemeToggle.astro";
     list-style: none;
   }
   .nav-item {
-    color: var(--text-dark);
+    color: var(--text);
     transition-duration: 300ms;
     place-content: center;
     padding: 0 1rem;

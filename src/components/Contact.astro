@@ -6,7 +6,7 @@ import Section from "../components/Section.astro";
   <div class="container">
     <h2>Contact</h2>
     <form>
-      <div class="form-control">
+      <div class="form-control fade-in" scroll-anim>
         <label for="name-input">Name</label>
         <input
           type="text"
@@ -18,7 +18,7 @@ import Section from "../components/Section.astro";
           data-field
         />
       </div>
-      <div class="form-control">
+      <div class="form-control fade-in" scroll-anim>
         <label for="email-input">Email</label>
         <input
           type="email"
@@ -29,7 +29,7 @@ import Section from "../components/Section.astro";
           data-field
         />
       </div>
-      <div class="form-control">
+      <div class="form-control fade-in" scroll-anim>
         <label for="message-input">Message</label>
         <textarea
           id="message-input"
@@ -40,7 +40,7 @@ import Section from "../components/Section.astro";
           data-field
           placeholder="Your message here..."></textarea>
       </div>
-      <div>
+      <div class="fade-in" scroll-anim>
         <button
           disabled="true"
           class="btn"
@@ -103,5 +103,8 @@ import Section from "../components/Section.astro";
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    background: #0005;
+    padding: 1rem;
+    backdrop-filter: blur(4px);
   }
 </style>

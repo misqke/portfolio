@@ -1,3 +1,4 @@
+<!-- activate nav links on scroll -->
 <script>
   const sections = document.querySelectorAll("section");
   const links = document.querySelectorAll("[data-link]");
@@ -7,7 +8,8 @@
   window.addEventListener("scroll", (e) => {
     for (let i = 1; i < sections.length; i++) {
       const rect = sections[i].getBoundingClientRect();
-      if (rect.top >= -1 * half && rect.top < half) {
+      if (rect.top < half) {
+        if (i >= 2) links[i - 2].classList.remove("active");
         links[i - 1].classList.add("active");
       } else {
         links[i - 1].classList.remove("active");
@@ -16,6 +18,7 @@
   });
 </script>
 
+<!-- animate on scroll into view -->
 <script>
   const topPadding = document
     .getElementById("header-inner")
