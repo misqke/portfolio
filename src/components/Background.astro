@@ -8,12 +8,10 @@
   const nebula = document.getElementById("nebula");
   const stars = document.getElementById("stars");
   window.addEventListener("scroll", (e) => {
-    nebula.style.top = (-1 * window.scrollY) / 2 + "px";
-    nebula.style.left = (-1 * window.scrollY) / 4 + "px";
-    nebula.style.transform = `rotateZ(${window.scrollY / 180}deg)`;
-    stars.style.top = (-1 * window.scrollY) / 10 + "px";
-    stars.style.left = (-1 * window.scrollY) / 15 + "px";
-    stars.style.transform = `rotateZ(${(-1 * window.scrollY) / 180}deg)`;
+    nebula.style.rotate = window.scrollY / 180 + "deg";
+    nebula.style.translate = `${(-1 * window.scrollY) / 2}px ${(-1 * window.scrollY) / 4}px`;
+    stars.style.rotate = (-1 * window.scrollY) / 270 + "deg";
+    stars.style.translate = `${(-1 * window.scrollY) / 10}px ${(-1 * window.scrollY) / 15}px`;
   });
 </script>
 
@@ -32,11 +30,24 @@
     width: 100%;
     height: 100%;
     scale: 150%;
-    opacity: 0.5;
+    /* opacity: 0.5; */
+    animation: twinkle 10s linear infinite;
   }
   #nebula {
     position: absolute;
     left: 0;
     top: 0;
+    opacity: 0.7;
+  }
+  @keyframes twinkle {
+    0% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 0.2;
+    }
   }
 </style>

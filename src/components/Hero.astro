@@ -3,7 +3,11 @@ import Section from "../components/Section.astro";
 ---
 
 <Section id="hero" class="hero" fullHeight="true">
-  <div class="centered" id="hero-content"></div>
+  <div class="centered fade-in" id="hero-content" scroll-anim>
+    <h1>Mike Rust<br />Web Developer</h1>
+    <!-- <h1>Mike Rust</h1> -->
+    <!-- <h2>Web Developer</h2> -->
+  </div>
 </Section>
 
 <style>
@@ -13,12 +17,33 @@ import Section from "../components/Section.astro";
     left: 50%;
     top: 50%;
     translate: -50% -50%;
-    width: 100%;
-    height: 100%;
     display: grid;
     place-content: center;
-    font-size: 6vw;
     font-weight: 800;
+  }
+
+  .centered h1,
+  .centered h2 {
+    font-size: 7vw;
+    color: transparent;
+    background: linear-gradient(
+      360deg,
+      transparent 30%,
+      var(--text) 60%,
+      var(--primary)
+    );
+    background-clip: text;
+    animation: colorIn 5s linear forwards;
+    background-size: 100% 400%;
+  }
+
+  @keyframes colorIn {
+    0% {
+      background-position: 0% 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
   }
 
   @media screen and (max-width: 700px) {

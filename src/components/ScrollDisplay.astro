@@ -8,8 +8,11 @@ const half = Math.floor(items.length / 2);
     {
       items.map((item, index) => {
         return (
-          <span class={index == half ? "scroll-item active" : "scroll-item"}>
-            <img src="lake.jpg" />
+          <span
+            class={index == half ? "scroll-item active" : "scroll-item"}
+            style={`background-image: url("lake.jpg")`}
+          >
+            {/* <img src="lake.jpg" /> */}
             <h3>{item.title}</h3>
             <p>{item.description}</p>
           </span>
@@ -48,18 +51,24 @@ const half = Math.floor(items.length / 2);
   }
   .scroll-item {
     display: inline;
-    border: 0.5rem solid var(--bg);
+    border: 2px solid var(--primary);
     width: 4rem;
     overflow: hidden;
     position: relative;
     transition: width 500ms;
-    object-fit: cover;
     cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    background-color: #0006;
+    background-blend-mode: darken;
+    background-repeat: no-repeat;
+    height: 500px;
   }
   .scroll-item img {
     object-fit: cover;
     width: calc(70vw - 1rem);
-    aspect-ratio: 16 / 9;
+    height: auto;
+    object-position: center;
     display: inline;
   }
   .scroll-item p {
@@ -87,5 +96,6 @@ const half = Math.floor(items.length / 2);
   .scroll-item.active {
     width: 70vw;
     cursor: default;
+    box-shadow: 0px 0px 9px 3px var(--primary);
   }
 </style>

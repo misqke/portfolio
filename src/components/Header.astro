@@ -14,19 +14,13 @@
     <nav>
       <ul>
         <li>
-          <a href="#about"
-            ><div class="nav-item" data-link="about">About</div></a
-          >
+          <a href="#about" class="nav-item" data-link="about">About</a>
         </li>
         <li>
-          <a href="#projects"
-            ><div class="nav-item" data-link="projects">Projects</div></a
-          >
+          <a href="#projects" class="nav-item" data-link="projects">Projects</a>
         </li>
         <li>
-          <a href="#contact"
-            ><div class="nav-item" data-link="contact">Contact</div></a
-          >
+          <a href="#contact" class="nav-item" data-link="contact">Contact</a>
         </li>
       </ul>
     </nav>
@@ -41,8 +35,7 @@
   const header = document.getElementById("header");
   window.addEventListener("scroll", (e) => {
     scrollInner.style.width = `${(window.scrollY / (document.body.offsetHeight - window.innerHeight)) * 100}%`;
-    if (window.scrollY > 600) header.style.background = "#0009";
-    else if (window.screenY > 300) header.style.background = "#0005";
+    if (window.scrollY > 300) header.style.background = "#0009";
     else header.style.background = "#0000";
   });
 </script>
@@ -101,10 +94,14 @@
     padding: 0 1rem;
     font-weight: 400;
   }
-  li .nav-item:hover,
-  li .nav-item.active {
+  li a.nav-item:hover,
+  li a.nav-item.active {
     color: var(--primary);
+    text-shadow:
+      0px 0px 8px var(--primary),
+      0px 0px 14px var(--primary);
   }
+
   #btn-container {
     display: flex;
     flex-direction: row;
