@@ -24,9 +24,14 @@ const half = Math.floor(items.length / 2);
 </div>
 
 <script>
+  // @ts-nocheck
   const scrollItems = document.querySelectorAll(".scroll-item");
-  let isAnimating = false;
+  const containerHeight =
+    document.querySelector(".projects-inner").scrollHeight;
   scrollItems.forEach((item, index) => {
+    if (window.innerWidth > 700)
+      item.style.height = `${containerHeight * 0.75}px`;
+
     item.addEventListener("click", () => {
       scrollItems.forEach((innerItem) => innerItem.classList.remove("active"));
       scrollItems[index].classList.add("active");
@@ -48,6 +53,8 @@ const half = Math.floor(items.length / 2);
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    gap: 1rem;
+    padding: 1rem;
   }
   .scroll-item {
     display: inline;
@@ -55,7 +62,7 @@ const half = Math.floor(items.length / 2);
     width: 4rem;
     overflow: hidden;
     position: relative;
-    transition: width 500ms;
+    transition-duration: 500ms;
     cursor: pointer;
     background-size: cover;
     background-position: center;
@@ -63,6 +70,7 @@ const half = Math.floor(items.length / 2);
     background-blend-mode: darken;
     background-repeat: no-repeat;
     height: 500px;
+    border-radius: var(--border-radius);
   }
   .scroll-item img {
     object-fit: cover;
@@ -73,29 +81,72 @@ const half = Math.floor(items.length / 2);
   }
   .scroll-item p {
     opacity: 0;
-    width: 0;
-    transition:
-      width 500ms,
-      opacity 500ms 250ms;
-    text-wrap: nowrap;
     position: absolute;
     left: 0.75rem;
     bottom: 0.75rem;
   }
   .scroll-item.active p {
-    opacity: 1;
-    width: calc(70vw - 1rem);
+    animation: show ease-in 1000ms forwards;
   }
   .scroll-item h3 {
     position: absolute;
-    top: 0.75rem;
-    left: 0.75rem;
+    bottom: 2rem;
+    font-size: 1.5rem;
+    left: 1.75rem;
     color: #fff;
     text-wrap: nowrap;
+    transform-origin: left;
+    transform: rotateZ(-90deg);
   }
   .scroll-item.active {
     width: 70vw;
     cursor: default;
-    box-shadow: 0px 0px 9px 3px var(--primary);
+    box-shadow: var(--shadow);
+  }
+
+  .scroll-item.active h3 {
+    transform: rotateZ(0deg);
+    left: 1rem;
+    top: 1rem;
+  }
+
+  @keyframes show {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    .scroll-display-track {
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .scroll-item {
+      display: block;
+      width: 90vw;
+      height: 4rem;
+    }
+    .scroll-item.active {
+      width: 90vw;
+      height: 500px;
+      cursor: default;
+      box-shadow: var(--shadow);
+    }
+    .scroll-item h3 {
+      position: absolute;
+      top: 1rem;
+      font-size: 1.5rem;
+      left: 1.75rem;
+      color: #fff;
+      text-wrap: nowrap;
+      transform-origin: left;
+      transform: rotateZ(0deg);
+    }
   }
 </style>

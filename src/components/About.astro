@@ -2,48 +2,21 @@
 import Section from "../components/Section.astro";
 ---
 
-<Section id="about">
-  <div class="container">
-    <h2>About</h2>
-    <div class="content">
-      <div>
-        <p class="fade-in" scroll-anim>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ipsam
-          voluptates nostrum perferendis eius odit? Cumque fugit aperiam enim
-          possimus impedit odio quod nemo minus.
-        </p>
-        <p class="fade-in" scroll-anim>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ipsam
-          voluptates nostrum perferendis eius odit? Cumque fugit aperiam enim
-          possimus impedit odio quod nemo minus.
-        </p>
-        <p class="fade-in" scroll-anim>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ipsam
-          voluptates nostrum perferendis eius odit? Cumque fugit aperiam enim
-          possimus impedit odio quod nemo minus.
-        </p>
-        <p class="fade-in" scroll-anim>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod est
-          obcaecati quibusdam eaque voluptate itaque blanditiis qui possimus,
-          provident officia aspernatur? Doloremque fugit dolor dicta nobis
-          nesciunt ducimus explicabo, nisi quo maiores? Ab natus sint numquam,
-          tenetur nulla est omnis?
-        </p>
-      </div>
-      <div></div>
+<Section id="about" fullHeight="true">
+  <div class="container fh">
+    <h2 class="section-title fade-in" scroll-anim>About</h2>
+    <div class="container-inner">
+      <p class="fade-in" scroll-anim>
+        Hi, I'm Mike. I'm a web developer located in Ellwood City, Pennsylvania.
+      </p>
+      <p class="fade-in" scroll-anim>
+        Hi, I'm Mike. I'm a web developer located in Ellwood City, Pennsylvania.
+      </p>
+      <p class="fade-in" scroll-anim>
+        Hi, I'm Mike. I'm a web developer located in Ellwood City, Pennsylvania.
+      </p>
     </div>
   </div>
 </Section>
 
-<style>
-  .content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-    div {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-  }
-</style>
+<style></style>

@@ -30,16 +30,21 @@
     --primary: #20a6dc;
     --text: #fff;
     --bg: #000;
+    --bg-trans: #000a;
     --bg-dark: #000;
     --white: #fff;
     --black: #111;
     --content-max: 1400px;
     --text-shadow: #43434355;
+    --border-radius: 0.5rem;
+    --shadow: 0px 0px 15px 5px var(--primary);
+    --header-height: 4rem;
 
     background: var(--bg);
     font-family: "Kalam", sans-serif;
     color: var(--text);
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   .hero {
@@ -52,6 +57,49 @@
     margin-left: auto;
     margin-right: auto;
     padding: 1rem;
+  }
+  .container.fh {
+    height: calc(100dvh - var(--header-height) - 2.5rem);
+  }
+  .container-inner {
+    display: grid;
+    width: 100%;
+    height: calc(100dvh - var(--header-height) - 5.5rem);
+    place-content: center;
+  }
+  .btn {
+    background: var(--primary);
+    box-shadow: 0px 0px 9px 3px var(--primary);
+    border: none;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    color: #fff;
+    cursor: pointer;
+    transition: background 250ms;
+  }
+  .btn:hover {
+    background: var(--primary-dark);
+  }
+  .btn:disabled {
+    background: #333;
+    cursor: default;
+    box-shadow: none;
+  }
+  .glass-bg {
+    background: var(--bg-trans);
+    backdrop-filter: blur(3px);
+  }
+
+  .section-title {
+    font-size: 3rem;
+    color: var(--bg-trans);
+    line-height: 1;
+    /* -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--primary); */
+    text-shadow:
+      0px 0px 25px var(--primary),
+      0px 0px 10px var(--primary),
+      0px 0px 15px var(--primary);
   }
 
   @media screen and (max-width: 700px) {
@@ -80,22 +128,11 @@
     translate: 0;
     opacity: 1;
   }
-  .btn {
-    background: var(--primary);
-    box-shadow: 0px 0px 9px 3px var(--primary);
-    border: none;
-    font-size: 1rem;
-    padding: 1rem 2rem;
-    color: #fff;
-    cursor: pointer;
-    transition: background 250ms;
+  .shadow-in {
+    box-shadow: 0px 0px 0px 0px var(--primary);
+    transition: box-shadow 1000ms;
   }
-  .btn:hover {
-    background: var(--primary-dark);
-  }
-  .btn:disabled {
-    background: #333;
-    cursor: default;
-    box-shadow: none;
+  .shadow-in.visible {
+    box-shadow: 0px 0px 10px 7px var(--primary);
   }
 </style>

@@ -2,61 +2,105 @@
 import Section from "../components/Section.astro";
 ---
 
-<Section id="hero" class="hero" fullHeight="true">
-  <div class="centered fade-in" id="hero-content" scroll-anim>
-    <h1>Mike Rust<br />Web Developer</h1>
-    <!-- <h1>Mike Rust</h1> -->
-    <!-- <h2>Web Developer</h2> -->
+<section id="hero" class="hero">
+  <div class="centered shadow-in" id="hero-content" scroll-anim>
+    <div class="content">
+      <h1>Mike Rust</h1>
+      <p>Bringing the web to life</p>
+    </div>
+    <!-- <div class="display">
+      <div class="glass-bg"></div>
+      <div class="mid-grid">
+        <div class="glass-bg"></div>
+        <div></div>
+        <div class="glass-bg"></div>
+      </div>
+      <div class="glass-bg"></div>
+    </div> -->
   </div>
-</Section>
+</section>
 
 <style>
+  .hero {
+    height: calc(100vh - var(--header-height));
+  }
   .centered {
-    text-align: center;
     position: absolute;
-    left: 50%;
-    top: 50%;
-    translate: -50% -50%;
+    top: 1rem;
+    left: var(--header-height);
+    right: var(--header-height);
+    bottom: var(--header-height);
     display: grid;
     place-content: center;
     font-weight: 800;
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: row;
+    border: 2px solid var(--primary);
+    /* box-shadow: var(--shadow); */
   }
 
-  .centered h1,
-  .centered h2 {
-    font-size: 7vw;
-    color: transparent;
-    background: linear-gradient(
-      360deg,
-      transparent 30%,
-      var(--text) 60%,
-      var(--primary)
-    );
-    background-clip: text;
-    animation: colorIn 5s linear forwards;
-    background-size: 100% 400%;
+  .centered div {
+    flex: 1;
   }
 
-  @keyframes colorIn {
-    0% {
-      background-position: 0% 100%;
-    }
-    100% {
-      background-position: 0% 0%;
-    }
+  .content {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+    align-items: center;
+  }
+
+  .content h1 {
+    font-size: 4rem;
+  }
+
+  .content p {
+    font-size: 2rem;
+  }
+
+  .display {
+    display: grid;
+    grid-template-rows: 10vw 1fr 10vw;
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+  }
+
+  .display div:first-child {
+    border-top-right-radius: var(--border-radius);
+  }
+
+  .display div:last-child {
+    border-bottom-right-radius: var(--border-radius);
+  }
+
+  .display .mid-grid {
+    display: grid;
+    grid-template-columns: 0vw 1fr 10vw;
+  }
+
+  .mid-grid div:nth-child(2) {
+    border: 2px solid var(--primary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow) inset;
   }
 
   @media screen and (max-width: 700px) {
     .centered {
-      font-size: 8vw;
+      flex-direction: column;
+      left: 5%;
+      right: 5%;
     }
-    #hero-content-shadow p {
-      translate: 0 8vw;
+    .display {
+      display: grid;
+      grid-template-rows: 0vw 1fr 12vw;
+      border-top-right-radius: var(--border-radius);
+      border-bottom-right-radius: var(--border-radius);
     }
-  }
-  @keyframes cycle {
-    to {
-      background-position: 200%;
+    .display .mid-grid {
+      grid-template-columns: 12vw 1fr 12vw;
     }
   }
 </style>

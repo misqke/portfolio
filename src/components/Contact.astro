@@ -3,52 +3,54 @@ import Section from "../components/Section.astro";
 ---
 
 <Section id="contact" fullHeight="true">
-  <div class="container">
-    <h2>Contact</h2>
-    <form>
-      <div class="form-control fade-in" scroll-anim>
-        <label for="name-input">Name</label>
-        <input
-          type="text"
-          id="name-input"
-          name="name-input"
-          minlength="4"
-          required
-          placeholder="John Doe"
-          data-field
-        />
-      </div>
-      <div class="form-control fade-in" scroll-anim>
-        <label for="email-input">Email</label>
-        <input
-          type="email"
-          id="email-input"
-          name="email-input"
-          required
-          placeholder="mrustdev@gmail.com"
-          data-field
-        />
-      </div>
-      <div class="form-control fade-in" scroll-anim>
-        <label for="message-input">Message</label>
-        <textarea
-          id="message-input"
-          name="message-input"
-          rows="8"
-          minlength="15"
-          required
-          data-field
-          placeholder="Your message here..."></textarea>
-      </div>
-      <div class="fade-in" scroll-anim>
-        <button
-          disabled="true"
-          class="btn"
-          id="contact-submit-button"
-          type="submit">Submit</button
-        >
-      </div>
-    </form>
+  <div class="container fh">
+    <h2 class="section-title fade-in" scroll-anim>Contact</h2>
+    <div class="container-inner">
+      <form class="glass-bg shadow-in" scroll-anim>
+        <div class="form-control fade-in" scroll-anim>
+          <label for="name-input">Name</label>
+          <input
+            type="text"
+            id="name-input"
+            name="name-input"
+            minlength="4"
+            required
+            placeholder="John Doe"
+            data-field
+          />
+        </div>
+        <div class="form-control fade-in" scroll-anim>
+          <label for="email-input">Email</label>
+          <input
+            type="email"
+            id="email-input"
+            name="email-input"
+            required
+            placeholder="mrustdev@gmail.com"
+            data-field
+          />
+        </div>
+        <div class="form-control fade-in" scroll-anim>
+          <label for="message-input">Message</label>
+          <textarea
+            id="message-input"
+            name="message-input"
+            rows="8"
+            minlength="15"
+            required
+            data-field
+            placeholder="Your message here..."></textarea>
+        </div>
+        <div class="fade-in" scroll-anim>
+          <button
+            disabled="true"
+            class="btn"
+            id="contact-submit-button"
+            type="submit">Submit</button
+          >
+        </div>
+      </form>
+    </div>
   </div>
 </Section>
 
@@ -86,27 +88,27 @@ import Section from "../components/Section.astro";
     textarea:focus {
       outline: none;
       border-color: var(--primary);
+      border-radius: var(--border-radius);
     }
     input:valid,
     textarea:valid {
-      box-shadow: 0px 0px 9px 3px var(--primary);
+      box-shadow: var(--shadow);
       border-color: var(--primary);
     }
   }
   form {
-    width: 100%;
+    width: 600px;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    max-width: 600px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: #0005;
     padding: 2rem;
-    backdrop-filter: blur(4px);
     border: 2px solid var(--primary);
-    box-shadow: 0px 0px 19px 3px var(--primary);
+    /* box-shadow: var(--shadow); */
+    border-radius: var(--border-radius);
+  }
+  @media screen and (max-width: 600px) {
+    form {
+      width: 90vw;
+    }
   }
 </style>

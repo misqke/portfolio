@@ -34,8 +34,12 @@
   const scrollInner = document.getElementById("scroll-tracker-inner");
   const header = document.getElementById("header");
   window.addEventListener("scroll", (e) => {
+    const perc =
+      (window.scrollY / (document.body.offsetHeight - window.innerHeight)) *
+      100;
     scrollInner.style.width = `${(window.scrollY / (document.body.offsetHeight - window.innerHeight)) * 100}%`;
-    if (window.scrollY > 300) header.style.background = "#0009";
+    // scrollInner.style.background = `linear-gradient(90deg, var(--primary) ${perc / 2}%, transparent, var(--primary) ${100 - perc / 2}%)`;
+    if (window.scrollY > 300) header.style.background = "#000";
     else header.style.background = "#0000";
   });
 </script>
@@ -43,9 +47,9 @@
 <style>
   #header {
     width: 100%;
-    position: fixed;
+    position: sticky;
     top: 0;
-    border-bottom: 1px solid var(--primary);
+    /* border-bottom: 1px solid var(--primary); */
     background: #0000;
     z-index: 100;
     transition: background 250ms;
@@ -60,11 +64,11 @@
     margin-right: auto;
     position: relative;
     font-size: 1.25rem;
-    height: 5rem;
+    height: var(--header-height);
   }
 
   .title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--text);
     span {
@@ -120,7 +124,7 @@
   }
   #scroll-tracker-inner {
     background: var(--primary);
-    box-shadow: 0px 0px 5px 2px var(--primary);
+    box-shadow: var(--shadow);
     height: 1px;
     width: 0%;
   }
