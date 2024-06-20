@@ -1,22 +1,34 @@
 ---
 import Section from "../components/Section.astro";
+import SkillsBar from "./SkillsBar.astro";
 ---
 
 <Section id="about" fullHeight="true">
   <div class="container fh">
-    <h2 class="section-title fade-in" scroll-anim>About</h2>
+    <h2 class="section-title sticky">About</h2>
     <div class="container-inner">
       <p class="fade-in" scroll-anim>
-        Hi, I'm Mike. I'm a web developer located in Ellwood City, Pennsylvania.
+        Hi, I'm Mike. I'm a web developer with two years of professional
+        experience.
       </p>
       <p class="fade-in" scroll-anim>
-        Hi, I'm Mike. I'm a web developer located in Ellwood City, Pennsylvania.
+        I build responsive and user-friendly websites and apps with HTML, CSS,
+        and JavaScript.
       </p>
       <p class="fade-in" scroll-anim>
-        Hi, I'm Mike. I'm a web developer located in Ellwood City, Pennsylvania.
+        I'm also experienced with Wordpress, SQL, and C#.
       </p>
+      <div id="skills glass-bg">
+        <SkillsBar />
+      </div>
     </div>
   </div>
 </Section>
 
-<style></style>
+<style>
+  p {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+</style>

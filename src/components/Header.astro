@@ -7,7 +7,7 @@
     <div id="logo-btns">
       <a href="#" onclick="javascript:scrollTo(top);">
         <div class="nav-item">
-          <p class="title">Mike<span>Rust</span></p>
+          <p class="section-title nav-title">Mike<span>Rust</span></p>
         </div>
       </a>
     </div>
@@ -26,21 +26,29 @@
     </nav>
   </div>
   <div id="scroll-tracker">
-    <div id="scroll-tracker-inner"></div>
+    <div class="scroll-tracker-inner"></div>
+    <div class="scroll-tracker-inner"></div>
   </div>
 </header>
 
 <script is:inline>
-  const scrollInner = document.getElementById("scroll-tracker-inner");
+  const scrollInner = document.querySelectorAll(".scroll-tracker-inner");
   const header = document.getElementById("header");
   window.addEventListener("scroll", (e) => {
     const perc =
       (window.scrollY / (document.body.offsetHeight - window.innerHeight)) *
       100;
-    scrollInner.style.width = `${(window.scrollY / (document.body.offsetHeight - window.innerHeight)) * 100}%`;
-    // scrollInner.style.background = `linear-gradient(90deg, var(--primary) ${perc / 2}%, transparent, var(--primary) ${100 - perc / 2}%)`;
-    if (window.scrollY > 300) header.style.background = "#000";
-    else header.style.background = "#0000";
+    scrollInner.forEach((si) => {
+      si.style.width = `${perc / 2}%`;
+    });
+    // scrollInner.style.width = `${(window.scrollY / (document.body.offsetHeight - window.innerHeight)) * 100}%`;
+    if (window.scrollY > 300) {
+      header.style.background = "#000";
+      header.style.borderBottom = "1px solid var(--primary)";
+    } else {
+      header.style.background = "#0000";
+      header.style.borderBottom = "";
+    }
   });
 </script>
 
@@ -63,17 +71,17 @@
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     height: var(--header-height);
   }
 
-  .title {
-    font-size: 1.5rem;
+  .nav-title {
+    font-size: 2rem;
     font-weight: 700;
-    color: var(--text);
+    /* color: var(--text);
     span {
       color: var(--primary);
-    }
+    } */
   }
 
   #logo-btns {
@@ -121,8 +129,11 @@
     height: 0.25rem;
     position: relative;
     top: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
-  #scroll-tracker-inner {
+  .scroll-tracker-inner {
     background: var(--primary);
     box-shadow: var(--shadow);
     height: 1px;

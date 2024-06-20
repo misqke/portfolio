@@ -38,7 +38,7 @@
     --text-shadow: #43434355;
     --border-radius: 0.5rem;
     --shadow: 0px 0px 15px 5px var(--primary);
-    --header-height: 4rem;
+    --header-height: 5rem;
 
     background: var(--bg);
     font-family: "Kalam", sans-serif;
@@ -57,6 +57,7 @@
     margin-left: auto;
     margin-right: auto;
     padding: 1rem;
+    position: relative;
   }
   .container.fh {
     height: calc(100dvh - var(--header-height) - 2.5rem);
@@ -91,15 +92,36 @@
   }
 
   .section-title {
-    font-size: 3rem;
     color: var(--bg-trans);
     line-height: 1;
     /* -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--primary); */
     text-shadow:
+      0px 0px 5px var(--primary),
+      0px 0px 15px var(--primary),
       0px 0px 25px var(--primary),
-      0px 0px 10px var(--primary),
-      0px 0px 15px var(--primary);
+      0px 0px 35px var(--primary);
+  }
+
+  .section-title.sticky {
+    position: sticky;
+    top: calc(var(--header-height) + 2rem);
+    z-index: 10;
+  }
+
+  h2.section-title {
+    font-size: 3rem;
+  }
+
+  .nebula-text {
+    /* text-shadow: 0px 0px 0px var(--text); */
+    color: white;
+    /* background: url("/nebula.png"); */
+    /* background-size: 100%; */
+    background: black;
+    /* background-clip: text; */
+    -webkit-text-stroke: 2px var(--primary);
+    mix-blend-mode: multiply;
   }
 
   @media screen and (max-width: 700px) {

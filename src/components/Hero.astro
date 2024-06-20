@@ -3,20 +3,10 @@ import Section from "../components/Section.astro";
 ---
 
 <section id="hero" class="hero">
-  <div class="centered shadow-in" id="hero-content" scroll-anim>
-    <div class="content">
-      <h1>Mike Rust</h1>
-      <p>Bringing the web to life</p>
+  <div class="container fh" id="hero-content">
+    <div class="container-inner">
+      <h1 class="section-title">Mike Rust</h1>
     </div>
-    <!-- <div class="display">
-      <div class="glass-bg"></div>
-      <div class="mid-grid">
-        <div class="glass-bg"></div>
-        <div></div>
-        <div class="glass-bg"></div>
-      </div>
-      <div class="glass-bg"></div>
-    </div> -->
   </div>
 </section>
 
@@ -24,83 +14,9 @@ import Section from "../components/Section.astro";
   .hero {
     height: calc(100vh - var(--header-height));
   }
-  .centered {
-    position: absolute;
-    top: 1rem;
-    left: var(--header-height);
-    right: var(--header-height);
-    bottom: var(--header-height);
-    display: grid;
-    place-content: center;
-    font-weight: 800;
-    border-radius: var(--border-radius);
-    display: flex;
-    flex-direction: row;
-    border: 2px solid var(--primary);
-    /* box-shadow: var(--shadow); */
-  }
 
-  .centered div {
-    flex: 1;
-  }
-
-  .content {
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    border-top-left-radius: var(--border-radius);
-    border-bottom-left-radius: var(--border-radius);
-    align-items: center;
-  }
-
-  .content h1 {
-    font-size: 4rem;
-  }
-
-  .content p {
-    font-size: 2rem;
-  }
-
-  .display {
-    display: grid;
-    grid-template-rows: 10vw 1fr 10vw;
-    border-top-right-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius);
-  }
-
-  .display div:first-child {
-    border-top-right-radius: var(--border-radius);
-  }
-
-  .display div:last-child {
-    border-bottom-right-radius: var(--border-radius);
-  }
-
-  .display .mid-grid {
-    display: grid;
-    grid-template-columns: 0vw 1fr 10vw;
-  }
-
-  .mid-grid div:nth-child(2) {
-    border: 2px solid var(--primary);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow) inset;
-  }
-
-  @media screen and (max-width: 700px) {
-    .centered {
-      flex-direction: column;
-      left: 5%;
-      right: 5%;
-    }
-    .display {
-      display: grid;
-      grid-template-rows: 0vw 1fr 12vw;
-      border-top-right-radius: var(--border-radius);
-      border-bottom-right-radius: var(--border-radius);
-    }
-    .display .mid-grid {
-      grid-template-columns: 12vw 1fr 12vw;
-    }
+  h1 {
+    font-size: 5rem;
+    font-weight: 900;
   }
 </style>
