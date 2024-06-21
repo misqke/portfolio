@@ -1,7 +1,55 @@
 ---
-
+import { Icon } from "astro-icon/components";
 ---
 
-<div></div>
+<div id="skills-bar" class="shadow-in" scroll-anim>
+  <div>
+    <Icon name="IonLogoHtml5" />
+    <p>HTML</p>
+  </div>
+  <div class="icon-card">
+    <Icon name="IonLogoCss3" />
+    <p>CSS</p>
+  </div>
+  <div class="icon-card">
+    <Icon name="IonLogoJavascript" />
+    <p>JavaScript</p>
+  </div>
+  <div class="icon-card">
+    <Icon name="IonLogoReact" />
+    <p>React</p>
+  </div>
+  <div class="icon-card">
+    <Icon name="IonLogoNodejs" />
+    <p>Node</p>
+  </div>
+  <div class="icon-card">
+    <Icon name="IonLogoWordpress" />
+    <p class="section-title">Wordpress</p>
+  </div>
+</div>
 
-<style></style>
+<style>
+  #skills-bar {
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+  }
+  .icon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .icon-card p {
+    font-weight: bold;
+  }
+  [data-icon] {
+    font-size: 4rem;
+    color: var(--bg-trans);
+    filter: drop-shadow(0px 0px 5px var(--primary));
+  }
+</style>

@@ -6,19 +6,22 @@ import SkillsBar from "./SkillsBar.astro";
 <Section id="about" fullHeight="true">
   <div class="container fh">
     <h2 class="section-title sticky">About</h2>
-    <div class="container-inner">
-      <p class="fade-in" scroll-anim>
-        Hi, I'm Mike. I'm a web developer with two years of professional
-        experience.
-      </p>
-      <p class="fade-in" scroll-anim>
-        I build responsive and user-friendly websites and apps with HTML, CSS,
-        and JavaScript.
-      </p>
-      <p class="fade-in" scroll-anim>
-        I'm also experienced with Wordpress, SQL, and C#.
-      </p>
-      <div id="skills glass-bg">
+    <div class="container-inner evenly">
+      <div>
+        <p class="fade-in" scroll-anim>
+          Hi, I'm Mike. I'm a web developer with two years of professional
+          experience.
+        </p>
+        <p class="fade-in" scroll-anim>
+          I build responsive and user-friendly websites and apps with HTML, CSS,
+          and JavaScript.
+        </p>
+        <p class="fade-in" scroll-anim>
+          I'm also experienced with Wordpress, SQL, and C#.
+        </p>
+      </div>
+
+      <div id="skills" class="glass-bg">
         <SkillsBar />
       </div>
     </div>

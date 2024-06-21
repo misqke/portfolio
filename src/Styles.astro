@@ -63,10 +63,18 @@
     height: calc(100dvh - var(--header-height) - 2.5rem);
   }
   .container-inner {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    height: calc(100dvh - var(--header-height) - 5.5rem);
-    place-content: center;
+    height: calc(100dvh - var(--header-height) - 6rem);
+    align-items: center;
+    justify-content: center;
+  }
+  .container-inner.between {
+    justify-content: space-between;
+  }
+  .container-inner.evenly {
+    justify-content: space-evenly;
   }
   .btn {
     background: var(--primary);
