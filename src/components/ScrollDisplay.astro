@@ -9,11 +9,16 @@ const half = Math.floor(items.length / 2);
       items.map((item, index) => {
         return (
           <span
-            class={index == half ? "scroll-item active" : "scroll-item"}
+            class={
+              index == half
+                ? "scroll-item active fade-in"
+                : "scroll-item fade-in"
+            }
             style={`background-image: url("lake.jpg")`}
+            scroll-anim
           >
             {/* <img src="lake.jpg" /> */}
-            <h3>{item.title}</h3>
+            <h3 class="section-title">{item.title}</h3>
             <p>{item.description}</p>
           </span>
         );
@@ -62,7 +67,9 @@ const half = Math.floor(items.length / 2);
     width: 4rem;
     overflow: hidden;
     position: relative;
-    transition-duration: 500ms;
+    transition:
+      width 500ms,
+      opacity 1000ms;
     cursor: pointer;
     background-size: cover;
     background-position: center;
@@ -71,6 +78,7 @@ const half = Math.floor(items.length / 2);
     background-repeat: no-repeat;
     height: 500px;
     border-radius: var(--border-radius);
+    /* flex-grow: 1; */
   }
   .scroll-item img {
     object-fit: cover;
@@ -93,7 +101,7 @@ const half = Math.floor(items.length / 2);
     bottom: 2rem;
     font-size: 1.5rem;
     left: 1.75rem;
-    color: #fff;
+    /* color: #fff; */
     text-wrap: nowrap;
     transform-origin: left;
     transform: rotateZ(-90deg);
@@ -131,6 +139,7 @@ const half = Math.floor(items.length / 2);
       display: block;
       width: 90vw;
       height: 4rem;
+      transition: height 500ms;
     }
     .scroll-item.active {
       width: 90vw;

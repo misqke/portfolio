@@ -21,7 +21,7 @@ import SkillsBar from "./SkillsBar.astro";
         </p>
       </div>
 
-      <div id="skills" class="glass-bg">
+      <div id="skills" class="">
         <SkillsBar />
       </div>
     </div>
@@ -33,5 +33,8 @@ import SkillsBar from "./SkillsBar.astro";
     font-size: 2rem;
     margin-bottom: 1rem;
     text-align: center;
+  }
+  #skills {
+    border-radius: var(--border-radius);
   }
 </style>
