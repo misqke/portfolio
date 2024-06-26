@@ -35,6 +35,8 @@ import { Icon } from "astro-icon/components";
     <Icon name="deviconCSharp" />
     <p class="section-title">C# / .NET</p>
   </div>
+  <div class="barrier left"></div>
+  <div class="barrier right"></div>
 </div>
 
 <style>
@@ -43,9 +45,24 @@ import { Icon } from "astro-icon/components";
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 4rem;
+    gap: 6rem;
     overflow: hidden;
     border-radius: var(--border-radius);
+    position: relative;
+  }
+  .barrier {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    width: 200px;
+    z-index: 2;
+    filter: blur(3px);
+  }
+  .barrier.left {
+    left: 0;
+  }
+  .barrier.right {
+    right: 0;
   }
   .icon-card {
     display: flex;
@@ -61,7 +78,7 @@ import { Icon } from "astro-icon/components";
     font-size: 1.5rem;
   }
   [data-icon] {
-    font-size: 5rem;
+    font-size: 6rem;
     color: var(--bg);
     filter: drop-shadow(0px 0px 15px var(--primary));
   }

@@ -5,9 +5,9 @@ import SkillsBar from "./SkillsBar.astro";
 
 <Section id="about" fullHeight="true">
   <div class="container fh">
-    <h2 class="section-title sticky">About</h2>
+    <h2 class="section-title">About</h2>
     <div class="container-inner evenly">
-      <div>
+      <div class="text-container glass-bg">
         <p class="fade-in" scroll-anim>
           Hi, I'm Mike. I'm a web developer with two years of professional
           experience.
@@ -21,7 +21,7 @@ import SkillsBar from "./SkillsBar.astro";
         </p>
       </div>
 
-      <div id="skills" class="">
+      <div id="skills" class="glass-bg">
         <SkillsBar />
       </div>
     </div>
@@ -33,6 +33,9 @@ import SkillsBar from "./SkillsBar.astro";
     font-size: 2rem;
     margin-bottom: 1rem;
     text-align: center;
+  }
+  .text-container {
+    flex: 1;
   }
   #skills {
     border-radius: var(--border-radius);

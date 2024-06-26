@@ -1,36 +1,55 @@
 ---
 import Section from "../components/Section.astro";
 import ScrollDisplay from "./ScrollDisplay.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 const projects = [
   {
     title: "Special Forces Art Department",
     link: "https://graphicdesignerpa.netlify.app/",
     description:
       "A business / portfolio website for a freelance graphic designer. Built with react using NextJS.",
-    src: "",
+    src: "sfad.png",
   },
   {
     title: "NoPixel GTA Hacking Game",
     link: "https://nopixelhacking.netlify.app/",
     description:
       "Clone of the hacking mini game from the NoPixel GTA RP server. Built with React.",
-    src: "",
+    src: "sfad.png",
   },
   {
     title: "D&D Encounter Generator",
     link: "https://encounter-buddy.netlify.app/",
     description:
       "An encounter generator / monster compendium for Dungeons and Dragons 5th edition. Built with React using NextJs",
-    src: "",
+    src: "sfad.png",
+  },
+  {
+    title: "D&D Encounter Generator",
+    link: "https://encounter-buddy.netlify.app/",
+    description:
+      "An encounter generator / monster compendium for Dungeons and Dragons 5th edition. Built with React using NextJs",
+    src: "sfad.png",
   },
 ];
 ---
 
 <Section id="projects" fullHeight="true">
   <div class="container fh">
-    <h2 class="section-title sticky">Projects</h2>
+    <h2 class="section-title">Projects</h2>
     <div class="projects-inner container-inner">
-      <ScrollDisplay items={projects} />
+      {projects.map((p) => <ProjectCard project={p} />)}
+      <!-- <ScrollDisplay items={projects} /> -->
     </div>
   </div>
 </Section>
+
+<style>
+  .projects-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem 1rem;
+  }
+</style>

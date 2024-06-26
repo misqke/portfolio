@@ -1,0 +1,47 @@
+---
+const { project } = Astro.props;
+---
+
+<div class="project-card fide-in" scroll-anim>
+  <img src={project.src} />
+  <div class="overlay glass-bg">
+    <button class="btn">Learn More</button>
+    <h3>{project.title}</h3>
+  </div>
+</div>
+
+<style>
+  .project-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border: 1px solid var(--primary);
+    overflow: hidden;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    background: #000;
+  }
+  .overlay {
+    position: absolute;
+    inset: 0;
+    transition-duration: 500ms;
+    display: grid;
+    place-content: center;
+    translate: 0 calc(-100% + 3.5rem);
+    border-bottom: 1px solid var(--primary);
+  }
+  button {
+  }
+  h3 {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
+  .project-card:hover .overlay {
+    translate: 0 0;
+  }
+</style>

@@ -30,7 +30,7 @@
     --primary: #20a6dc;
     --text: #fff;
     --bg: #000;
-    --bg-trans: #000a;
+    --bg-trans: #0006;
     --bg-dark: #000;
     --white: #fff;
     --black: #111;
@@ -58,6 +58,7 @@
     margin-right: auto;
     padding: 1rem;
     position: relative;
+    overflow-x: hidden;
   }
   .container.fh {
     min-height: calc(100dvh - var(--header-height) - 2.5rem);
@@ -69,6 +70,7 @@
     min-height: calc(100dvh - var(--header-height) - 6rem);
     align-items: center;
     justify-content: center;
+    overflow-x: hidden;
   }
   .container-inner.between {
     justify-content: space-between;
@@ -100,7 +102,7 @@
   }
 
   .section-title {
-    color: var(--bg-trans);
+    color: var(--bg);
     line-height: 1;
     /* -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--primary); */
@@ -119,17 +121,7 @@
 
   h2.section-title {
     font-size: 3rem;
-  }
-
-  .nebula-text {
-    /* text-shadow: 0px 0px 0px var(--text); */
-    color: white;
-    /* background: url("/nebula.png"); */
-    /* background-size: 100%; */
-    background: black;
-    /* background-clip: text; */
-    -webkit-text-stroke: 2px var(--primary);
-    mix-blend-mode: multiply;
+    padding: 0.5rem 1rem;
   }
 
   @media screen and (max-width: 1400px) {
