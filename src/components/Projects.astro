@@ -1,6 +1,5 @@
 ---
 import Section from "../components/Section.astro";
-import ScrollDisplay from "./ScrollDisplay.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 const projects = [
   {
@@ -15,7 +14,7 @@ const projects = [
     link: "https://nopixelhacking.netlify.app/",
     description:
       "Clone of the hacking mini game from the NoPixel GTA RP server. Built with React.",
-    src: "sfad.png",
+    src: "nph.png",
   },
   {
     title: "D&D Encounter Generator",
@@ -38,18 +37,141 @@ const projects = [
   <div class="container fh">
     <h2 class="section-title">Projects</h2>
     <div class="projects-inner container-inner">
-      {projects.map((p) => <ProjectCard project={p} />)}
-      <!-- <ScrollDisplay items={projects} /> -->
+      <div class="card-container">
+        {projects.map((p, i) => <ProjectCard project={p} index={i} />)}
+      </div>
+      <div class="current-project fade-in" scroll-anim>
+        <div class="current-project-img-container">
+          <img src={projects[0].src} />
+        </div>
+        <div class="current-project-info-container glass-bg">
+          <h3>{projects[0].title}</h3>
+          <p>{projects[0].description}</p>
+          <div>
+            <a class="btn" href={projects[0].link} target="_blank">Visit</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </Section>
 
+<script>
+  // @ts-ignore
+  const projects = [
+    {
+      title: "Special Forces Art Department",
+      link: "https://graphicdesignerpa.netlify.app/",
+      description:
+        "A business / portfolio website for a freelance graphic designer. Built with react using NextJS.",
+      src: "sfad.png",
+    },
+    {
+      title: "NoPixel GTA Hacking Game",
+      link: "https://nopixelhacking.netlify.app/",
+      description:
+        "Clone of the hacking mini game from the NoPixel GTA RP server. Built with React.",
+      src: "nph.png",
+    },
+    {
+      title: "D&D Encounter Generator",
+      link: "https://encounter-buddy.netlify.app/",
+      description:
+        "An encounter generator / monster compendium for Dungeons and Dragons 5th edition. Built with React using NextJs",
+      src: "sfad.png",
+    },
+    {
+      title: "D&D Encounter Generator",
+      link: "https://encounter-buddy.netlify.app/",
+      description:
+        "An encounter generator / monster compendium for Dungeons and Dragons 5th edition. Built with React using NextJs",
+      src: "sfad.png",
+    },
+  ];
+  const projectCards = document.querySelectorAll(".project-card");
+  const imgContainer = document.querySelector(".current-project-img-container");
+  let currentProject = projects[0];
+  let currentCard = projectCards[0];
+  let currentImg = document.querySelector(".current-project-img-container img");
+  const title = document.querySelector(".current-project-info-container h3");
+  const desc = document.querySelector(".current-project-info-container p");
+  const liveBtn = document.querySelector(".current-project-info-container a");
+
+  const swapProjectsDom = (index) => {
+    const newProject = projects[index];
+    title.innerText = newProject.title;
+    desc.innerText = newProject.description;
+    liveBtn.href = newProject.link;
+    currentCard.append(currentImg);
+    imgContainer.append(projectCards[index].querySelector("img"));
+  };
+
+  const fadeTextOut = () => {
+    title.classList.add("hide");
+    desc.classList.add("hide");
+  };
+
+  const fadeTextIn = () => {
+    title.classList.remove("hide");
+    desc.classList.remove("hide");
+  };
+
+  const handleProjectClick = async (e, card) => {
+    const index = e.currentTarget.getAttribute("data-index");
+
+    if (!document.startViewTransition) {
+      swapProjectsDom(index);
+      return;
+    }
+    const newImg = projectCards[index].querySelector("img");
+    newImg.style.viewTransitionName = "img-swap";
+    const transition = document.startViewTransition(() => {
+      fadeTextOut();
+      swapProjectsDom(index);
+    });
+
+    await transition.ready;
+    fadeTextIn();
+    newImg.style.viewTransitionName = "";
+    currentProject = projects[index];
+    currentCard = projectCards[index];
+    currentImg = newImg;
+  };
+
+  projectCards.forEach((c) => {
+    c.addEventListener("click", (e) => handleProjectClick(e, c));
+  });
+</script>
+
 <style>
   .projects-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 2rem;
-    padding: 2rem 1rem;
+    padding: 2rem 0 0 0;
+    height: unset;
+    overflow-y: hidden;
+  }
+  .card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+  .current-project {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .current-project-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border: 1px solid var(--primary);
+    text-align: center;
+    height: 100%;
   }
 </style>

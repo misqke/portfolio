@@ -30,7 +30,7 @@
     --primary: #20a6dc;
     --text: #fff;
     --bg: #000;
-    --bg-trans: #0006;
+    --bg-trans: #000a;
     --bg-dark: #000;
     --white: #fff;
     --black: #111;
@@ -62,6 +62,7 @@
   }
   .container.fh {
     min-height: calc(100dvh - var(--header-height) - 2.5rem);
+    height: 100%;
   }
   .container-inner {
     display: flex;
@@ -71,6 +72,7 @@
     align-items: center;
     justify-content: center;
     overflow-x: hidden;
+    height: 100%;
   }
   .container-inner.between {
     justify-content: space-between;
@@ -87,6 +89,10 @@
     color: #fff;
     cursor: pointer;
     transition: background 250ms;
+  }
+  a.btn {
+    display: block;
+    line-height: 1rem;
   }
   .btn:hover {
     background: var(--primary-dark);
@@ -122,6 +128,36 @@
   h2.section-title {
     font-size: 3rem;
     padding: 0.5rem 1rem;
+  }
+
+  .current-project img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .project-card img {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    object-fit: cover;
+  }
+  .current-project-info-container h3,
+  .current-project-info-container p {
+    opacity: 1;
+    transition: opacity 1000ms;
+    display: block;
+  }
+  .current-project-info-container h3 {
+    font-size: 2rem;
+  }
+  .current-project-info-container p {
+    font-size: 1.5rem;
+  }
+  .current-project-info-container h3.hide,
+  .current-project-info-container p.hide {
+    opacity: 0;
+    transition: opacity 0ms;
   }
 
   @media screen and (max-width: 1400px) {
