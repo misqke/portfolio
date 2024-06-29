@@ -34,7 +34,7 @@
     --bg-dark: #000;
     --white: #fff;
     --black: #111;
-    --content-max: 1400px;
+    --content-max: 1500px;
     --text-shadow: #43434355;
     --border-radius: 0.5rem;
     --shadow: 0px 0px 15px 5px var(--primary);
@@ -72,13 +72,19 @@
     align-items: center;
     justify-content: center;
     overflow-x: hidden;
+    overflow-y: hidden;
     height: 100%;
+    gap: 2rem;
+    padding: 0 1rem;
   }
   .container-inner.between {
     justify-content: space-between;
   }
   .container-inner.evenly {
     justify-content: space-evenly;
+  }
+  .container-inner.row {
+    flex-direction: row;
   }
   .btn {
     background: var(--primary);

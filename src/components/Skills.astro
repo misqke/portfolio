@@ -1,0 +1,188 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div id="skills-bar">
+  <div class="icon-card fade-in" scroll-anim data-i="0">
+    <div class="icon-card-inner">
+      <Icon name="IonLogoHtml5" />
+      <p class="section-title">HTML</p>
+    </div>
+  </div>
+  <div class="icon-card fade-in" scroll-anim data-i="1">
+    <div class="icon-card-inner">
+      <Icon name="IonLogoCss3" />
+      <p class="section-title">CSS</p>
+    </div>
+  </div>
+  <div class="icon-card fade-in" scroll-anim data-i="2">
+    <div class="icon-card-inner">
+      <Icon name="IonLogoJavascript" />
+      <p class="section-title">JavaScript</p>
+    </div>
+  </div>
+  <div class="icon-card fade-in" scroll-anim data-i="3">
+    <div class="icon-card-inner">
+      <Icon name="IonLogoReact" />
+      <p class="section-title">React</p>
+    </div>
+  </div>
+  <div id="center-card" class=""></div>
+  <div class="icon-card fade-in" scroll-anim data-i="4">
+    <div class="icon-card-inner">
+      <Icon name="IonLogoNodejs" />
+      <p class="section-title">Node</p>
+    </div>
+  </div>
+  <div class="icon-card fade-in" scroll-anim data-i="5">
+    <div class="icon-card-inner">
+      <Icon name="IonLogoWordpress" />
+      <p class="section-title">Wordpress</p>
+    </div>
+  </div>
+  <div class="icon-card fade-in" scroll-anim data-i="6">
+    <div class="icon-card-inner">
+      <Icon name="mdiSQL" />
+      <p class="section-title">SQL</p>
+    </div>
+  </div>
+  <div class="icon-card fade-in" scroll-anim data-i="7">
+    <div class="icon-card-inner">
+      <Icon name="deviconCSharp" />
+      <p class="section-title">C# / .NET</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // @ts-ignore
+  const container = document.querySelector(".about-inner");
+  const skillsBar = document.getElementById("skills-bar");
+  const cards = document.querySelectorAll(".icon-card");
+  const inners = document.querySelectorAll(".icon-card-inner");
+  const center = document.getElementById("center-card");
+
+  let currentIndex = null;
+  const swapIcons = (index) => {
+    if (currentIndex != null) cards[currentIndex].append(inners[currentIndex]);
+    center.append(inners[index]);
+  };
+
+  cards.forEach((c) => {
+    c.addEventListener("mouseover", async (e) => {
+      const index = Number(e.currentTarget.getAttribute("data-i"));
+      if (currentIndex != null && currentIndex == index) return;
+
+      if (!document.startViewTransition) {
+        swapIcons(index);
+        currentIndex = index;
+        return;
+      }
+
+      if (currentIndex != null)
+        inners[currentIndex].style.viewTransitionName = "icon-out";
+      inners[index].style.viewTransitionName = "icon-in";
+      const transition = document.startViewTransition(() => {
+        swapIcons(index);
+      });
+
+      await transition.ready;
+      if (currentIndex != null)
+        inners[currentIndex].style.viewTransitionName = "";
+      inners[index].style.viewTransitionName = "";
+      currentIndex = index;
+    });
+  });
+
+  skillsBar.addEventListener("mouseleave", async (e) => {
+    if (
+      currentIndex == null ||
+      e.toElement.classList.contains("icon-card") ||
+      e.toElement == document.documentElement
+    )
+      return;
+    if (!document.startViewTransition) {
+      cards[currentIndex].append(inners[currentIndex]);
+    } else {
+      inners[currentIndex].style.viewTransitionName = "icon-return";
+      const transition = document.startViewTransition(() => {
+        cards[currentIndex].append(inners[currentIndex]);
+      });
+
+      await transition.ready;
+      inners[currentIndex].style.viewTransitionName = "";
+    }
+    currentIndex = null;
+  });
+</script>
+
+<style>
+  #skills-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    rotate: z 45deg;
+    animation: spin-clock 60s linear infinite;
+    width: 90%;
+    aspect-ratio: 1;
+  }
+  .icon-card,
+  #center-card {
+    display: grid;
+    place-content: center;
+    width: 100%;
+    aspect-ratio: 1;
+    rotate: z -45deg;
+    animation: spin-counter-clock 60s linear infinite;
+  }
+  .icon-card-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .icon-card-inner p {
+    font-weight: bold;
+    font-size: 1rem;
+    opacity: 0;
+  }
+  #center-card .icon-card-inner {
+    scale: 200%;
+  }
+  #center-card .icon-card-inner p {
+    opacity: 1;
+  }
+  [data-icon] {
+    font-size: 2rem;
+    color: var(--bg);
+    filter: drop-shadow(0px 0px 15px var(--primary))
+      drop-shadow(0px 0px 5px var(--primary));
+    text-shadow: 0px 0px 10px var(--primary);
+  }
+
+  @keyframes spin-clock {
+    from {
+      rotate: z 45deg;
+    }
+    to {
+      rotate: z 405deg;
+    }
+  }
+  @keyframes spin-counter-clock {
+    from {
+      rotate: z -45deg;
+    }
+    to {
+      rotate: z -405deg;
+    }
+  }
+
+  @media screen and (max-width: 1400px) {
+  }
+  @media screen and (max-width: 1100px) {
+  }
+  @media screen and (max-width: 850px) {
+  }
+  @media screen and (max-width: 600px) {
+  }
+</style>

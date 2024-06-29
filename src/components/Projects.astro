@@ -103,6 +103,8 @@ const projects = [
     desc.innerText = newProject.description;
     liveBtn.href = newProject.link;
     currentCard.append(currentImg);
+    currentCard.classList.remove("selected");
+    projectCards[index].classList.add("selected");
     imgContainer.append(projectCards[index].querySelector("img"));
   };
 
@@ -149,7 +151,7 @@ const projects = [
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    padding: 2rem 0 0 0;
+    padding: 2rem 1rem 0;
     height: unset;
     overflow-y: hidden;
   }
@@ -163,7 +165,9 @@ const projects = [
     gap: 1rem;
     grid-template-columns: 2fr 1fr;
   }
-
+  .current-project-img-container {
+    border: 1px solid var(--primary);
+  }
   .current-project-info-container {
     display: flex;
     flex-direction: column;

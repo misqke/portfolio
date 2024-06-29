@@ -1,43 +1,57 @@
 ---
 import Section from "../components/Section.astro";
-import SkillsBar from "./SkillsBar.astro";
+import Skills from "./Skills.astro";
 ---
 
 <Section id="about" fullHeight="true">
   <div class="container fh">
     <h2 class="section-title">About</h2>
-    <div class="container-inner evenly">
-      <div class="text-container glass-bg">
+    <div class="container-inner about-inner">
+      <div class="text-container">
         <p class="fade-in" scroll-anim>
-          Hi, I'm Mike. I'm a web developer with two years of professional
-          experience.
+          Hi, I'm Mike, a web developer. I build responsive and user-friendly
+          websites and applications.
         </p>
         <p class="fade-in" scroll-anim>
-          I build responsive and user-friendly websites and apps with HTML, CSS,
-          and JavaScript.
+          I have two years of professional experience and am located in Ellwood
+          City, PA.
         </p>
         <p class="fade-in" scroll-anim>
-          I'm also experienced with Wordpress, SQL, and C#.
+          I do my best work with HTML, CSS, and Javascript, but I'm also
+          experienced with Wordpress, SQL, and C#.
+        </p>
+        <p class="fade-in" scroll-anim>
+          When i'm not coding, I enjoy puzzles, mysteries, fantasy, and strategy
+          games.
         </p>
       </div>
 
-      <div id="skills" class="glass-bg">
-        <SkillsBar />
+      <div id="skills">
+        <Skills />
       </div>
     </div>
   </div>
 </Section>
 
 <style>
+  #skills {
+    padding: 0 1rem;
+  }
+  .about-inner {
+    display: grid;
+    grid-template-columns: 60% 40%;
+  }
+  .about-inner div {
+    width: 100%;
+  }
   p {
     font-size: 2rem;
     margin-bottom: 1rem;
-    text-align: center;
   }
   .text-container {
-    flex: 1;
-  }
-  #skills {
-    border-radius: var(--border-radius);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 </style>

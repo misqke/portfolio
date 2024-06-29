@@ -1,9 +1,11 @@
 ---
 const { project, index } = Astro.props;
 const bg = "--bg: url(" + project.src + ");";
+const className =
+  index == 0 ? "project-card fade-in selected" : "project-card fade-in";
 ---
 
-<div class="project-card fade-in" style={bg} scroll-anim data-index={index}>
+<div class={className} style={bg} scroll-anim data-index={index}>
   {index != 0 ? <img src={project.src} /> : ""}
 </div>
 
@@ -17,6 +19,10 @@ const bg = "--bg: url(" + project.src + ");";
     background: var(--bg);
     background-size: cover;
     background-position: center;
+    cursor: pointer;
+  }
+  .project-card.selected {
+    box-shadow: 0px 0px 10px 7px var(--primary);
   }
   img {
     width: 100%;
