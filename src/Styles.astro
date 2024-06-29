@@ -61,14 +61,14 @@
     overflow-x: hidden;
   }
   .container.fh {
-    min-height: calc(100dvh - var(--header-height) - 2.5rem);
+    min-height: calc(100dvh - var(--header-height) - 2rem);
     height: 100%;
   }
   .container-inner {
     display: flex;
     flex-direction: column;
     width: 100%;
-    min-height: calc(100dvh - var(--header-height) - 6rem);
+    min-height: calc(100dvh - var(--header-height) - 8rem);
     align-items: center;
     justify-content: center;
     overflow-x: hidden;
@@ -166,15 +166,12 @@
     transition: opacity 0ms;
   }
 
-  @media screen and (max-width: 1400px) {
-    h2.section-title {
-      background: var(--bg-trans);
-      backdrop-filter: blur(4px);
-      width: fit-content;
-      padding: 1rem;
-      border: 1px solid var(--primary);
-      border-radius: var(--border-radius);
-      margin-bottom: 2rem;
+  @media screen and (min-width: 2200px) {
+    :root {
+      --content-max: 1700px;
+    }
+    html {
+      font-size: 18px;
     }
   }
 

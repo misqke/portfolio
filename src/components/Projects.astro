@@ -36,7 +36,14 @@ const projects = [
 <Section id="projects" fullHeight="true">
   <div class="container fh">
     <h2 class="section-title">Projects</h2>
+
     <div class="projects-inner container-inner">
+      <p class="portfolio-desc">
+        This site is built using Astro to take advantage of reusable components.
+        Aside from the framework components, everything on this site is built
+        with plain HTML, CSS, and Javascript. Check out some of my other work
+        featured below.
+      </p>
       <div class="card-container">
         {projects.map((p, i) => <ProjectCard project={p} index={i} />)}
       </div>
@@ -154,6 +161,12 @@ const projects = [
     padding: 2rem 1rem 0;
     height: unset;
     overflow-y: hidden;
+    justify-content: flex-start;
+    /* min-height: auto; */
+  }
+  .portfolio-desc {
+    font-size: 1.5rem;
+    padding: 0.5rem;
   }
   .card-container {
     display: grid;
@@ -173,9 +186,39 @@ const projects = [
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 2rem;
+    gap: 1rem;
     border: 1px solid var(--primary);
     text-align: center;
     height: 100%;
+  }
+  @media screen and (max-width: 1000px) {
+    .card-container {
+      grid-template-columns: 1fr 1fr;
+    }
+    .current-project {
+      grid-template-columns: 1fr;
+      gap: 0rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .current-project-img-container {
+      border: none;
+      padding: 0rem;
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+    }
+    .current-project-img-container img {
+      width: 100%;
+      height: auto;
+    }
+    .current-project-info-container.glass-bg {
+      background: #0006;
+      backdrop-filter: blur(2px);
+      padding: 1rem;
+    }
   }
 </style>

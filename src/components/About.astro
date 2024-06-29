@@ -5,24 +5,25 @@ import Skills from "./Skills.astro";
 
 <Section id="about" fullHeight="true">
   <div class="container fh">
-    <h2 class="section-title">About</h2>
+    <!-- <h2 class="section-title">About</h2> -->
     <div class="container-inner about-inner">
       <div class="text-container">
+        <h2 class="section-title">About</h2>
         <p class="fade-in" scroll-anim>
           Hi, I'm Mike, a web developer. I build responsive and user-friendly
           websites and applications.
         </p>
         <p class="fade-in" scroll-anim>
-          I have two years of professional experience and am located in Ellwood
-          City, PA.
-        </p>
-        <p class="fade-in" scroll-anim>
           I do my best work with HTML, CSS, and Javascript, but I'm also
-          experienced with Wordpress, SQL, and C#.
+          experienced with C#, .Net, Wordpress, and SQL.
         </p>
         <p class="fade-in" scroll-anim>
-          When i'm not coding, I enjoy puzzles, mysteries, fantasy, and strategy
-          games.
+          Web scraping and automation are also in my utility belt thanks to
+          Puppeteer JS.
+        </p>
+        <p class="fade-in" scroll-anim>
+          Currently, I'm learning how to build desktop apps with Javascript
+          using Electron JS.
         </p>
       </div>
 
@@ -39,7 +40,7 @@ import Skills from "./Skills.astro";
   }
   .about-inner {
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 50% 50%;
   }
   .about-inner div {
     width: 100%;
@@ -53,5 +54,18 @@ import Skills from "./Skills.astro";
     display: flex;
     flex-direction: column;
     gap: 2rem;
+  }
+  @media screen and (max-width: 1450px) {
+    p {
+      font-size: 1.5rem;
+    }
+    .text-container {
+      gap: 1.5rem;
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    .about-inner {
+      grid-template-columns: 100%;
+    }
   }
 </style>

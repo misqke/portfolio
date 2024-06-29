@@ -17,8 +17,8 @@ import { Icon } from "astro-icon/components";
   </div>
   <div class="icon-card fade-in" scroll-anim data-i="2">
     <div class="icon-card-inner">
-      <Icon name="IonLogoJavascript" />
-      <p class="section-title">JavaScript</p>
+      <Icon name="puppeteer" />
+      <p class="section-title">Puppeteer</p>
     </div>
   </div>
   <div class="icon-card fade-in" scroll-anim data-i="3">
@@ -27,26 +27,31 @@ import { Icon } from "astro-icon/components";
       <p class="section-title">React</p>
     </div>
   </div>
-  <div id="center-card" class=""></div>
-  <div class="icon-card fade-in" scroll-anim data-i="4">
+  <div id="center-card" class="icon-card fade-in" scroll-anim data-i="4">
+    <div class="icon-card-inner">
+      <Icon name="IonLogoJavascript" />
+      <p class="section-title">JavaScript</p>
+    </div>
+  </div>
+  <div class="icon-card fade-in" scroll-anim data-i="5">
     <div class="icon-card-inner">
       <Icon name="IonLogoNodejs" />
       <p class="section-title">Node</p>
     </div>
   </div>
-  <div class="icon-card fade-in" scroll-anim data-i="5">
+  <div class="icon-card fade-in" scroll-anim data-i="6">
     <div class="icon-card-inner">
       <Icon name="IonLogoWordpress" />
       <p class="section-title">Wordpress</p>
     </div>
   </div>
-  <div class="icon-card fade-in" scroll-anim data-i="6">
+  <div class="icon-card fade-in" scroll-anim data-i="7">
     <div class="icon-card-inner">
       <Icon name="mdiSQL" />
       <p class="section-title">SQL</p>
     </div>
   </div>
-  <div class="icon-card fade-in" scroll-anim data-i="7">
+  <div class="icon-card fade-in" scroll-anim data-i="8">
     <div class="icon-card-inner">
       <Icon name="deviconCSharp" />
       <p class="section-title">C# / .NET</p>
@@ -62,58 +67,62 @@ import { Icon } from "astro-icon/components";
   const inners = document.querySelectorAll(".icon-card-inner");
   const center = document.getElementById("center-card");
 
-  let currentIndex = null;
-  const swapIcons = (index) => {
-    if (currentIndex != null) cards[currentIndex].append(inners[currentIndex]);
-    center.append(inners[index]);
-  };
+  let animating = false;
+  let currentIndex = 4;
 
   cards.forEach((c) => {
     c.addEventListener("mouseover", async (e) => {
+      if (animating) return;
       const index = Number(e.currentTarget.getAttribute("data-i"));
-      if (currentIndex != null && currentIndex == index) return;
+      if (index == 4 || index == currentIndex) return;
 
+      const newInner = cards[index].querySelector(".icon-card-inner");
+      const currentInner = center.querySelector(".icon-card-inner");
+
+      animating = true;
       if (!document.startViewTransition) {
-        swapIcons(index);
+        cards[index].append(currentInner);
+        center.append(newInner);
         currentIndex = index;
+        animating = false;
         return;
       }
 
-      if (currentIndex != null)
-        inners[currentIndex].style.viewTransitionName = "icon-out";
-      inners[index].style.viewTransitionName = "icon-in";
+      currentInner.style.viewTransitionName = "icon-out";
+      newInner.style.viewTransitionName = "icon-in";
       const transition = document.startViewTransition(() => {
-        swapIcons(index);
+        cards[index].append(currentInner);
+        center.append(newInner);
       });
 
       await transition.ready;
-      if (currentIndex != null)
-        inners[currentIndex].style.viewTransitionName = "";
-      inners[index].style.viewTransitionName = "";
+      currentInner.style.viewTransitionName = "";
+      newInner.style.viewTransitionName = "";
       currentIndex = index;
+      animating = false;
     });
   });
 
-  skillsBar.addEventListener("mouseleave", async (e) => {
-    if (
-      currentIndex == null ||
-      e.toElement.classList.contains("icon-card") ||
-      e.toElement == document.documentElement
-    )
-      return;
-    if (!document.startViewTransition) {
-      cards[currentIndex].append(inners[currentIndex]);
-    } else {
-      inners[currentIndex].style.viewTransitionName = "icon-return";
-      const transition = document.startViewTransition(() => {
-        cards[currentIndex].append(inners[currentIndex]);
-      });
+  // skillsBar.addEventListener("mouseleave", async (e) => {
+  //   if (
+  //     currentIndex == null ||
+  //     e.toElement.classList.contains("icon-card") ||
+  //     e.toElement == document.documentElement
+  //   )
+  //     return;
+  //   if (!document.startViewTransition) {
+  //     cards[currentIndex].append(inners[currentIndex]);
+  //   } else {
+  //     inners[currentIndex].style.viewTransitionName = "icon-return";
+  //     const transition = document.startViewTransition(() => {
+  //       cards[currentIndex].append(inners[currentIndex]);
+  //     });
 
-      await transition.ready;
-      inners[currentIndex].style.viewTransitionName = "";
-    }
-    currentIndex = null;
-  });
+  //     await transition.ready;
+  //     inners[currentIndex].style.viewTransitionName = "";
+  //   }
+  //   currentIndex = null;
+  // });
 </script>
 
 <style>
