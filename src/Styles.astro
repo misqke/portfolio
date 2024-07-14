@@ -166,6 +166,23 @@
     transition: opacity 0ms;
   }
 
+  #hero h1.title {
+    font-weight: 900;
+    text-align: center;
+    position: relative;
+    line-height: 1;
+    animation-name: enter;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    font-size: 9vw;
+    text-shadow:
+      0px 0px 5px var(--primary),
+      0px 0px 15px var(--primary),
+      0px 0px 25px var(--primary),
+      0px 0px 35px var(--primary);
+  }
+
   @media screen and (min-width: 2200px) {
     :root {
       --content-max: 1700px;

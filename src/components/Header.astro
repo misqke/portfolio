@@ -5,7 +5,7 @@
 <header id="header">
   <div id="header-inner">
     <div id="logo-btns">
-      <a href="#" onclick="javascript:scrollTo(top);">
+      <a id="nav-title-container" href="#" onclick="javascript:scrollTo(top);">
         <div class="nav-item">
           <p class="section-title nav-title">Mike<span>Rust</span></p>
         </div>
@@ -29,127 +29,124 @@
     <div class="scroll-tracker-inner"></div>
     <div class="scroll-tracker-inner"></div>
   </div>
-</header>
 
-<script is:inline>
-  const scrollInner = document.querySelectorAll(".scroll-tracker-inner");
-  const header = document.getElementById("header");
-  window.addEventListener("scroll", (e) => {
-    const perc =
-      (window.scrollY / (document.body.offsetHeight - window.innerHeight)) *
-      100;
-    scrollInner.forEach((si) => {
-      si.style.width = `${perc / 2}%`;
+  <script is:inline>
+    const scrollInner = document.querySelectorAll(".scroll-tracker-inner");
+    const header = document.getElementById("header");
+    window.addEventListener("scroll", (e) => {
+      const perc =
+        (window.scrollY / (document.body.offsetHeight - window.innerHeight)) *
+        100;
+      scrollInner.forEach((si) => {
+        si.style.width = `${perc / 2}%`;
+      });
+      // scrollInner.style.width = `${(window.scrollY / (document.body.offsetHeight - window.innerHeight)) * 100}%`;
+      if (window.scrollY > 400) {
+        header.style.background = "#000";
+        header.style.borderBottom = "1px solid var(--primary)";
+      } else {
+        header.style.background = "#0000";
+        header.style.borderBottom = "";
+      }
     });
-    // scrollInner.style.width = `${(window.scrollY / (document.body.offsetHeight - window.innerHeight)) * 100}%`;
-    if (window.scrollY > 300) {
-      header.style.background = "#000";
-      header.style.borderBottom = "1px solid var(--primary)";
-    } else {
-      header.style.background = "#0000";
-      header.style.borderBottom = "";
+  </script>
+
+  <style>
+    #header {
+      width: 100%;
+      position: sticky;
+      top: 0;
+      /* border-bottom: 1px solid var(--primary); */
+      background: #0000;
+      z-index: 100;
+      transition: background 500ms;
     }
-  });
-</script>
+    #header-inner {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      max-width: var(--content-max);
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      font-size: 1.5rem;
+      height: var(--header-height);
+    }
 
-<style>
-  #header {
-    width: 100%;
-    position: sticky;
-    top: 0;
-    /* border-bottom: 1px solid var(--primary); */
-    background: #0000;
-    z-index: 100;
-    transition: background 250ms;
-  }
-  #header-inner {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    max-width: var(--content-max);
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    font-size: 1.5rem;
-    height: var(--header-height);
-  }
+    .nav-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--bg);
+    }
 
-  .nav-title {
-    font-size: 2rem;
-    font-weight: 700;
-    /* color: var(--text);
-    span {
+    #logo-btns {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      flex-grow: 1;
+      width: 100%;
+    }
+
+    nav ul {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      list-style: none;
+    }
+    .nav-item {
+      color: var(--text);
+      transition-duration: 300ms;
+      place-content: center;
+      padding: 0 1rem;
+      font-weight: 400;
+    }
+    li a.nav-item:hover,
+    li a.nav-item.active {
       color: var(--primary);
-    } */
-  }
-
-  #logo-btns {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    flex-grow: 1;
-    width: 100%;
-  }
-
-  nav ul {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    list-style: none;
-  }
-  .nav-item {
-    color: var(--text);
-    transition-duration: 300ms;
-    place-content: center;
-    padding: 0 1rem;
-    font-weight: 400;
-  }
-  li a.nav-item:hover,
-  li a.nav-item.active {
-    color: var(--primary);
-    text-shadow:
-      0px 0px 8px var(--primary),
-      0px 0px 14px var(--primary);
-  }
-
-  #btn-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  #btn-container > * {
-    place-content: center;
-    padding: 0 1em;
-  }
-
-  #scroll-tracker {
-    width: 100%;
-    height: 0.25rem;
-    position: relative;
-    top: 4px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .scroll-tracker-inner {
-    background: var(--primary);
-    box-shadow: var(--shadow);
-    height: 1px;
-    width: 0%;
-  }
-  @media screen and (max-width: 700px) {
-    html {
-      font-size: 14px;
+      text-shadow:
+        0px 0px 8px var(--primary),
+        0px 0px 14px var(--primary);
     }
-  }
-  @keyframes open {
-    0% {
-      height: 0%;
+
+    #btn-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
     }
-    100% {
-      height: 100%;
+    #btn-container > * {
+      place-content: center;
+      padding: 0 1em;
     }
-  }
-</style>
+
+    #scroll-tracker {
+      width: 100%;
+      height: 0.25rem;
+      position: relative;
+      top: 4px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .scroll-tracker-inner {
+      background: var(--primary);
+      box-shadow: var(--shadow);
+      height: 1px;
+      width: 0%;
+    }
+    @media screen and (max-width: 700px) {
+      html {
+        font-size: 14px;
+      }
+    }
+    @keyframes open {
+      0% {
+        height: 0%;
+      }
+      100% {
+        height: 100%;
+      }
+    }
+  </style>
+</header>

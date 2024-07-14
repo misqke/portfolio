@@ -3,55 +3,55 @@ import { Icon } from "astro-icon/components";
 ---
 
 <div id="skills-bar">
-  <div class="icon-card fade-in" scroll-anim data-i="0">
+  <div class="icon-card" data-i="0">
     <div class="icon-card-inner">
       <Icon name="IonLogoHtml5" />
       <p class="section-title">HTML</p>
     </div>
   </div>
-  <div class="icon-card fade-in" scroll-anim data-i="1">
+  <div class="icon-card" data-i="1">
     <div class="icon-card-inner">
       <Icon name="IonLogoCss3" />
       <p class="section-title">CSS</p>
     </div>
   </div>
-  <div class="icon-card fade-in" scroll-anim data-i="2">
+  <div class="icon-card" data-i="2">
     <div class="icon-card-inner">
       <Icon name="pupp" />
       <p class="section-title">Puppeteer</p>
     </div>
   </div>
-  <div class="icon-card fade-in" scroll-anim data-i="3">
+  <div class="icon-card" data-i="3">
     <div class="icon-card-inner">
       <Icon name="IonLogoReact" />
       <p class="section-title">React</p>
     </div>
   </div>
-  <div id="center-card" class="icon-card fade-in" scroll-anim data-i="4">
+  <div id="center-card" class="icon-card" data-i="4">
     <div class="icon-card-inner">
       <Icon name="IonLogoJavascript" />
       <p class="section-title">JavaScript</p>
     </div>
   </div>
-  <div class="icon-card fade-in" scroll-anim data-i="5">
+  <div class="icon-card" data-i="5">
     <div class="icon-card-inner">
       <Icon name="IonLogoNodejs" />
       <p class="section-title">Node</p>
     </div>
   </div>
-  <div class="icon-card fade-in" scroll-anim data-i="6">
+  <div class="icon-card" data-i="6">
     <div class="icon-card-inner">
       <Icon name="IonLogoWordpress" />
       <p class="section-title">Wordpress</p>
     </div>
   </div>
-  <div class="icon-card fade-in" scroll-anim data-i="7">
+  <div class="icon-card" data-i="7">
     <div class="icon-card-inner">
       <Icon name="database" />
       <p class="section-title">SQL</p>
     </div>
   </div>
-  <div class="icon-card fade-in" scroll-anim data-i="8">
+  <div class="icon-card" data-i="8">
     <div class="icon-card-inner">
       <Icon name="deviconCSharp" />
       <p class="section-title">C# / .NET</p>
@@ -61,10 +61,7 @@ import { Icon } from "astro-icon/components";
 
 <script>
   // @ts-ignore
-  const container = document.querySelector(".about-inner");
-  const skillsBar = document.getElementById("skills-bar");
   const cards = document.querySelectorAll(".icon-card");
-  const inners = document.querySelectorAll(".icon-card-inner");
   const center = document.getElementById("center-card");
 
   let animating = false;
@@ -102,27 +99,6 @@ import { Icon } from "astro-icon/components";
       animating = false;
     });
   });
-
-  // skillsBar.addEventListener("mouseleave", async (e) => {
-  //   if (
-  //     currentIndex == null ||
-  //     e.toElement.classList.contains("icon-card") ||
-  //     e.toElement == document.documentElement
-  //   )
-  //     return;
-  //   if (!document.startViewTransition) {
-  //     cards[currentIndex].append(inners[currentIndex]);
-  //   } else {
-  //     inners[currentIndex].style.viewTransitionName = "icon-return";
-  //     const transition = document.startViewTransition(() => {
-  //       cards[currentIndex].append(inners[currentIndex]);
-  //     });
-
-  //     await transition.ready;
-  //     inners[currentIndex].style.viewTransitionName = "";
-  //   }
-  //   currentIndex = null;
-  // });
 </script>
 
 <style>
