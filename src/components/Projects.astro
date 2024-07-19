@@ -5,6 +5,7 @@ const projects = [
   {
     title: "Special Forces Art Department",
     link: "https://graphicdesignerpa.netlify.app/",
+    github: "https://github.com/misqke/special-forces-art-department",
     description:
       "A business / portfolio website for a freelance graphic designer. Built with react using NextJS.",
     src: "sfad.png",
@@ -12,6 +13,7 @@ const projects = [
   {
     title: "NoPixel GTA Hacking Game",
     link: "https://nopixelhacking.netlify.app/",
+    github: "https://github.com/misqke/noPixelHackingGame",
     description:
       "Clone of the hacking mini game from the NoPixel GTA RP server. Built with React.",
     src: "nph.png",
@@ -19,16 +21,17 @@ const projects = [
   {
     title: "D&D Encounter Generator",
     link: "https://encounter-buddy.netlify.app/",
+    github: "https://github.com/misqke/encounter_buddy",
     description:
-      "An encounter generator / monster compendium for Dungeons and Dragons 5th edition. Built with React using NextJs",
+      "An encounter generator / monster compendium for Dungeons and Dragons 5th edition. Built with React using NextJs.",
     src: "dndeg.png",
   },
   {
-    title: "D&D Encounter Generator",
+    title: "Who's That Pokemon?",
     link: "https://encounter-buddy.netlify.app/",
-    description:
-      "An encounter generator / monster compendium for Dungeons and Dragons 5th edition. Built with React using NextJs",
-    src: "sfad.png",
+    github: "https://github.com/misqke/whos-that-pokemon",
+    description: "Simple pokemon guessing game based off the pokemon cartoon.",
+    src: "wtp.png",
   },
 ];
 ---
@@ -54,8 +57,9 @@ const projects = [
         <div class="current-project-info-container glass-bg">
           <h3>{projects[0].title}</h3>
           <p>{projects[0].description}</p>
-          <div>
-            <a class="btn" href={projects[0].link} target="_blank">Visit</a>
+          <div class="btn-container">
+            <a class="btn" href={projects[0].link} target="_blank">Live</a>
+            <a class="btn" href={projects[0].github} target="_blank">Code</a>
           </div>
         </div>
       </div>
@@ -69,6 +73,7 @@ const projects = [
     {
       title: "Special Forces Art Department",
       link: "https://graphicdesignerpa.netlify.app/",
+      github: "https://github.com/misqke/special-forces-art-department",
       description:
         "A business / portfolio website for a freelance graphic designer. Built with react using NextJS.",
       src: "sfad.png",
@@ -76,6 +81,7 @@ const projects = [
     {
       title: "NoPixel GTA Hacking Game",
       link: "https://nopixelhacking.netlify.app/",
+      github: "https://github.com/misqke/noPixelHackingGame",
       description:
         "Clone of the hacking mini game from the NoPixel GTA RP server. Built with React.",
       src: "nph.png",
@@ -83,16 +89,18 @@ const projects = [
     {
       title: "D&D Encounter Generator",
       link: "https://encounter-buddy.netlify.app/",
+      github: "https://github.com/misqke/encounter_buddy",
       description:
-        "An encounter generator / monster compendium for Dungeons and Dragons 5th edition. Built with React using NextJs",
-      src: "sfad.png",
+        "An encounter generator / monster compendium for Dungeons and Dragons 5th edition. Built with React using NextJs.",
+      src: "dndeg.png",
     },
     {
-      title: "D&D Encounter Generator",
+      title: "Who's That Pokemon?",
       link: "https://encounter-buddy.netlify.app/",
+      github: "https://github.com/misqke/whos-that-pokemon",
       description:
-        "An encounter generator / monster compendium for Dungeons and Dragons 5th edition. Built with React using NextJs",
-      src: "sfad.png",
+        "Simple pokemon guessing game based off the pokemon cartoon.",
+      src: "wtp.png",
     },
   ];
   const projectCards = document.querySelectorAll(".project-card");
@@ -180,6 +188,13 @@ const projects = [
   }
   .current-project-img-container {
     border: 1px solid var(--primary);
+  }
+  .btn-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
   }
   .current-project-info-container {
     display: flex;

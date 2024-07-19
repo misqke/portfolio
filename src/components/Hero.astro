@@ -1,11 +1,13 @@
 ---
-import Section from "../components/Section.astro";
+
 ---
 
 <section id="hero" class="hero">
   <div class="container fh" id="hero-content">
     <div class="container-inner">
-      <h1 class="title">Mike Rust<br /><span>Web Developer</span></h1>
+      <h1 class="title fade-in" scroll-anim>
+        Mike Rust<br /><span>Web Developer</span>
+      </h1>
     </div>
     <!-- <h2 class="title">Web Developer</h2> -->
   </div>
@@ -26,6 +28,16 @@ import Section from "../components/Section.astro";
 
   @keyframes enter {
     0% {
+      scale: 0% 0%;
+      rotate: x 88deg;
+      color: #0000;
+      text-shadow:
+        -4vw 0px 80px var(--primary),
+        4vw 0px 80px var(--primary),
+        -4vw 0px 80px var(--primary),
+        4vw 0px 80px var(--primary);
+    }
+    20% {
       scale: 100% 0%;
       rotate: x 88deg;
       color: #0000;
