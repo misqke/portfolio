@@ -113,6 +113,7 @@ const projects = [
   const liveBtn = document.querySelector(".current-project-info-container a");
 
   const swapProjectsDom = (index) => {
+    console.log(currentImg);
     const newProject = projects[index];
     title.innerText = newProject.title;
     desc.innerText = newProject.description;
@@ -136,20 +137,21 @@ const projects = [
   const handleProjectClick = async (e, card) => {
     const index = e.currentTarget.getAttribute("data-index");
 
+    const newImg = projectCards[index].querySelector("img");
     if (!document.startViewTransition) {
       swapProjectsDom(index);
-      return;
-    }
-    const newImg = projectCards[index].querySelector("img");
-    newImg.style.viewTransitionName = "img-swap";
-    const transition = document.startViewTransition(() => {
-      fadeTextOut();
-      swapProjectsDom(index);
-    });
+    } else {
+      newImg.style.viewTransitionName = "img-swap";
+      const transition = document.startViewTransition(() => {
+        fadeTextOut();
+        swapProjectsDom(index);
+      });
 
-    await transition.ready;
-    fadeTextIn();
-    newImg.style.viewTransitionName = "";
+      await transition.ready;
+      fadeTextIn();
+      newImg.style.viewTransitionName = "";
+    }
+
     currentProject = projects[index];
     currentCard = projectCards[index];
     currentImg = newImg;
