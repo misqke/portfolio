@@ -6,7 +6,16 @@ import Section from "../components/Section.astro";
   <div class="container fh">
     <h2 class="section-title">Contact</h2>
     <div class="container-inner">
-      <form class="glass-bg shadow-in" scroll-anim>
+      <div id="contact-msg" class="glass-bg contact-msg">
+        <p>Thank you for your submission!</p>
+      </div>
+      <form
+        class="glass-bg shadow-in"
+        name="contact"
+        id="contact-form"
+        scroll-anim
+        data-netlify="true"
+      >
         <div class="form-control fade-in" scroll-anim>
           <label for="name-input">Name</label>
           <input
@@ -67,6 +76,26 @@ import Section from "../components/Section.astro";
       submit.disabled = !valid;
     });
   });
+
+  const contactForm = document.getElementById("contact-form");
+  const contactMsg = document.getElementById("contact-msg");
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const myForm = event.target;
+    const formData = new FormData(myForm);
+
+    const res = await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString(),
+    });
+
+    contactForm.style.display = "none";
+    contactMsg.classList.add("show");
+  };
+
+  contactForm.addEventListener("submit", handleSubmit);
 </script>
 
 <style>
@@ -84,6 +113,7 @@ import Section from "../components/Section.astro";
       padding: 0.5rem;
       border: 2px solid var(--primary);
     }
+
     label {
       font-sie: 1.25rem;
     }
@@ -99,6 +129,23 @@ import Section from "../components/Section.astro";
       border-color: var(--primary);
     }
   }
+  .contact-msg {
+    padding: 1rem;
+    text-align: center;
+    display: none;
+    place-content: center;
+    opacity: 0;
+    transition: opacity 1000;
+    width: 600px;
+    border: 2px solid var(--primary);
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    font-size: 1.5rem;
+  }
+  .contact-msg.show {
+    display: grid;
+    opacity: 1;
+  }
   form {
     width: 600px;
     display: flex;
@@ -110,7 +157,8 @@ import Section from "../components/Section.astro";
     border-radius: var(--border-radius);
   }
   @media screen and (max-width: 600px) {
-    form {
+    form,
+    #contact-msg {
       width: 90vw;
     }
   }

@@ -18,6 +18,23 @@
     height: calc(100vh - var(--header-height));
   }
 
+  #hero h1.title {
+    font-weight: 900;
+    text-align: center;
+    position: relative;
+    line-height: 1;
+    animation-name: enter;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    font-size: 10vw;
+    text-shadow:
+      0px 0px 5px var(--primary),
+      0px 0px 15px var(--primary),
+      0px 0px 25px var(--primary),
+      0px 0px 35px var(--primary);
+  }
+
   .container-inner {
     gap: 0;
   }
