@@ -141,7 +141,7 @@ import { Icon } from "astro-icon/components";
     opacity: 1;
   }
   [data-icon] {
-    font-size: 2rem;
+    font-size: 3rem;
     color: var(--bg);
     filter: drop-shadow(0px 0px 15px var(--primary))
       drop-shadow(0px 0px 5px var(--primary));
@@ -168,9 +168,18 @@ import { Icon } from "astro-icon/components";
   @media screen and (max-width: 1400px) {
   }
   @media screen and (max-width: 1100px) {
+    [data-icon] {
+      font-size: 2.5rem;
+    }
   }
   @media screen and (max-width: 850px) {
+    [data-icon] {
+      font-size: 2rem;
+    }
   }
   @media screen and (max-width: 600px) {
+    .icon-card-inner p {
+      font-size: 0.5rem;
+    }
   }
 </style>
