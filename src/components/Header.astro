@@ -10,17 +10,31 @@
           <p class="section-title nav-title">Mike<span>Rust</span></p>
         </div>
       </a>
+      <button type="button" class="btn" id="nav-toggle-btn"
+        ><span>+</span></button
+      >
     </div>
     <nav>
       <ul>
         <li>
-          <a href="#about" class="nav-item" data-link="about">About</a>
+          <a href="#about" class="nav-item" data-link="about"
+            ><span>About</span></a
+          >
         </li>
         <li>
-          <a href="#projects" class="nav-item" data-link="projects">Projects</a>
+          <a href="#projects" class="nav-item" data-link="projects"
+            ><span>Projects</span></a
+          >
         </li>
         <li>
-          <a href="#contact" class="nav-item" data-link="contact">Contact</a>
+          <a href="#contact" class="nav-item" data-link="contact"
+            ><span>Contact</span></a
+          >
+        </li>
+        <li>
+          <a href="/MikeRustResume.pdf" target="blank" class="nav-item"
+            ><span>Resume</span></a
+          >
         </li>
       </ul>
     </nav>
@@ -49,6 +63,12 @@
         header.style.borderBottom = "";
       }
     });
+
+    const navToggle = document.getElementById("nav-toggle-btn");
+    const headerInner = document.getElementById("header-inner");
+    navToggle.addEventListener("click", (e) => {
+      headerInner.classList.toggle("open");
+    });
   </script>
 
   <style>
@@ -61,6 +81,7 @@
       z-index: 100;
       transition: background 500ms;
     }
+
     #header-inner {
       display: flex;
       flex-direction: row;
@@ -78,6 +99,10 @@
       font-size: 2rem;
       font-weight: 700;
       color: var(--bg);
+    }
+
+    #nav-toggle-btn {
+      display: none;
     }
 
     #logo-btns {
@@ -139,8 +164,46 @@
       html {
         font-size: 14px;
       }
-      a.nav-item {
-        font-size: 1.25rem;
+      #header-inner {
+        flex-direction: column;
+      }
+      #header-inner.open {
+        background: #000;
+      }
+      #header-inner.open nav ul {
+        display: flex;
+      }
+      #nav-toggle-btn {
+        display: block;
+        margin: 0 1rem;
+        padding: 0.25rem 0.75rem;
+      }
+      #header-inner #nav-toggle-btn span {
+        font-size: 1.75rem;
+        line-height: 1;
+        transition: rotate 500ms;
+        rotate: z 0deg;
+      }
+      #header-inner.open #nav-toggle-btn span {
+        display: block;
+        rotate: z 405deg;
+      }
+      nav ul {
+        flex-direction: column;
+        display: none;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        padding: 1rem 0;
+        left: 0;
+        background: #000;
+        text-align: center;
+        gap: 1rem;
+        border-bottom: 1px solid var(--primary);
+      }
+      nav ul li,
+      nav ul li a span {
+        width: 100%;
       }
     }
     @keyframes open {
