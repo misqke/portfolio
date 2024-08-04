@@ -59,8 +59,12 @@ const projects = [
           <h3>{projects[0].title}</h3>
           <p>{projects[0].description}</p>
           <div class="btn-container">
-            <a class="btn" href={projects[0].link} target="_blank">Live</a>
-            <a class="btn" href={projects[0].github} target="_blank">Code</a>
+            <a class="btn live-btn" href={projects[0].link} target="_blank"
+              >Live</a
+            >
+            <a class="btn github-btn" href={projects[0].github} target="_blank"
+              >Code</a
+            >
           </div>
         </div>
       </div>
@@ -111,14 +115,19 @@ const projects = [
   let currentImg = document.querySelector(".current-project-img-container img");
   const title = document.querySelector(".current-project-info-container h3");
   const desc = document.querySelector(".current-project-info-container p");
-  const liveBtn = document.querySelector(".current-project-info-container a");
+  const liveBtn = document.querySelector(
+    ".current-project-info-container a.live-btn"
+  );
+  const github = document.querySelector(
+    ".current-project-info-container a.github-btn"
+  );
 
   const swapProjectsDom = (index) => {
-    console.log(currentImg);
     const newProject = projects[index];
     title.innerText = newProject.title;
     desc.innerText = newProject.description;
     liveBtn.href = newProject.link;
+    github.href = newProject.github;
     currentCard.append(currentImg);
     currentCard.classList.remove("selected");
     projectCards[index].classList.add("selected");
